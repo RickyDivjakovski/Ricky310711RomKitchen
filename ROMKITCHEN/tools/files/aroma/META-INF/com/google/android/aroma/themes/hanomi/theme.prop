@@ -1,0 +1,67 @@
+img.background=bg
+img.titlebar=titlebar.9
+img.navbar=navbar.9
+img.dialog=dialog.9
+img.dialog.titlebar=dialog_titlebar.9
+img.progress=button.9
+img.prograss.fill=button_press.9
+img.selection=list.9
+img.selection.push=list.9
+img.button=button.9
+img.button.focus=button_focus.9
+img.button.push=button_press.9
+img.checkbox=cb
+img.checkbox.focus=cb_focus
+img.checkbox.push=cb_press
+img.checkbox.on=cb_on
+img.checkbox.on.focus=cb_on_focus
+img.checkbox.on.push=cb_on_press
+img.radio=radio
+img.radio.focus=radio_focus
+img.radio.push=radio_press
+img.radio.on=radio_on
+img.radio.on.focus=radio_on_focus
+img.radio.on.push=radio_on_press
+
+
+color.winbg           = #efefef
+color.winbg_g         = #e6e6e6
+color.winfg           = #000000
+color.winfg_gray      = #666666
+color.dialogbg        = #efefef
+color.dialogbg_g      = #e6e6e6
+color.dialogfg        = #000000
+color.textbg          = #ffffff
+color.textfg          = #000000
+color.textfg_gray     = #666666
+color.controlbg       = #ececec
+color.controlbg_g     = #bdbdbd
+color.controlfg       = #222222
+color.selectbg        = #48a3eb
+color.selectbg_g      = #48a3eb
+color.selectfg        = #000000
+color.titlebg         = #3b3b3b
+color.titlebg_g       = #e6e6e6
+color.titlefg         = #000000
+color.dlgtitlebg      = #3b3b3b
+color.dlgtitlebg_g    = #1a1a1a
+color.dlgtitlefg      = #000000
+color.scrollbar       = #89cff0
+color.navbg           = #e6e6e6
+color.navbg_g         = #c5c5c5
+color.border          = #dddddd
+color.border_g        = #cccccc
+color.progressglow    = #48a3eb
+
+config.roundsize             = 1
+config.button_roundsize      = 1
+config.window_roundsize      = 2
+config.transition_frame      = 6
+
+font.small                   = font.roboto.small
+font.big                     = font.roboto.big
+
+
+info.themename        = Honami
+info.description      = Xperia JB Theme for AROMA Installer
+info.author           = Ayush Singh

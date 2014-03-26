@@ -1,0 +1,115 @@
+Usage: cpio [OPTION...] [destination-directory]
+GNU `cpio' copies files to and from archives
+
+Examples:
+  # Copy files named in name-list to the archive
+  cpio -o < name-list [> archive]
+  # Extract files from the archive
+  cpio -i [< archive]
+  # Copy files named in name-list to destination-directory
+  cpio -p destination-directory < name-list
+
+ Main operation mode:
+  -i, --extract              Extract files from an archive (run in copy-in
+                             mode)
+  -o, --create               Create the archive (run in copy-out mode)
+  -p, --pass-through         Run in copy-pass mode
+  -t, --list                 Print a table of contents of the input
+
+ Operation modifiers valid in any mode:
+
+      --block-size=BLOCK-SIZE   Set the I/O block size to BLOCK-SIZE * 512
+                             bytes
+  -B                         Set the I/O block size to 5120 bytes
+  -c                         Use the old portable (ASCII) archive format
+  -C, --io-size=NUMBER       Set the I/O block size to the given NUMBER of
+                             bytes
+      --force-local          Archive file is local, even if its name contains
+                             colons
+  -f, --nonmatching          Only copy files that do not match any of the given
+                             patterns
+  -F, --file=[[USER@]HOST:]FILE-NAME
+                             Use this FILE-NAME instead of standard input or
+                             output. Optional USER and HOST specify the user
+                             and host names in case of a remote archive
+  -H, --format=FORMAT        Use given archive FORMAT
+  -M, --message=STRING       Print STRING when the end of a volume of the
+                             backup media is reached
+  -n, --numeric-uid-gid      In the verbose table of contents listing, show
+                             numeric UID and GID
+      --quiet                Do not print the number of blocks copied
+      --rsh-command=COMMAND  Use remote COMMAND instead of rsh
+  -v, --verbose              Verbosely list the files processed
+  -V, --dot                  Print a "." for each file processed
+  -W, --warning=FLAG         Control warning display. Currently FLAG is one of
+                             'none', 'truncate', 'all'. Multiple options
+                             accumulate.
+
+ Operation modifiers valid only in copy-in mode:
+
+  -b, --swap                 Swap both halfwords of words and bytes of
+                             halfwords in the data. Equivalent to -sS
+  -r, --rename               Interactively rename files
+  -s, --swap-bytes           Swap the bytes of each halfword in the files
+  -S, --swap-halfwords       Swap the halfwords of each word (4 bytes) in the
+                             files
+      --to-stdout            Extract files to standard output
+
+  -E, --pattern-file=FILE    Read additional patterns specifying filenames to
+                             extract or list from FILE
+      --only-verify-crc      When reading a CRC format archive, only verify the
+                             CRC's of each file in the archive, don't actually
+                             extract the files
+
+ Operation modifiers valid only in copy-out mode:
+
+  -A, --append               Append to an existing archive.
+  -O [[USER@]HOST:]FILE-NAME Archive filename to use instead of standard
+                             output. Optional USER and HOST specify the user
+                             and host names in case of a remote archive
+
+ Operation modifiers valid only in copy-pass mode:
+
+  -l, --link                 Link files instead of copying them, when
+                             possible
+
+ Operation modifiers valid in copy-in and copy-out modes:
+
+      --absolute-filenames   Do not strip file system prefix components from
+                             the file names
+      --no-absolute-filenames   Create all files relative to the current
+                             directory
+
+ Operation modifiers valid in copy-out and copy-pass modes:
+
+  -0, --null                 A list of filenames is terminated by a null
+                             character instead of a newline
+  -a, --reset-access-time    Reset the access times of files after reading them
+                            
+  -I [[USER@]HOST:]FILE-NAME Archive filename to use instead of standard input.
+                             Optional USER and HOST specify the user and host
+                             names in case of a remote archive
+  -L, --dereference          Dereference  symbolic  links  (copy  the files
+                             that they point to instead of copying the links).
+  -R, --owner=[USER][:.][GROUP]   Set the ownership of all files created to the
+                             specified USER and/or GROUP
+
+ Operation modifiers valid in copy-in and copy-pass modes:
+
+  -d, --make-directories     Create leading directories where needed
+  -m, --preserve-modification-time
+                             Retain previous file modification times when
+                             creating files
+      --no-preserve-owner    Do not change the ownership of the files
+      --sparse               Write files with large blocks of zeros as sparse
+                             files
+  -u, --unconditional        Replace all files unconditionally
+
+  -?, --help                 give this help list
+      --usage                give a short usage message
+      --version              print program version
+
+Mandatory or optional arguments to long options are also mandatory or optional
+for any corresponding short options.
+
+Report bugs to <bug-cpio@gnu.org>.

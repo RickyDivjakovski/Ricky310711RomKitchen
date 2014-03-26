@@ -1,0 +1,14 @@
+#!/system/bin/sh
+
+
+for files in /data/app/*.apk ; do
+zipalign -c 4 $files;
+ZIPCHECK=$?;
+if [ $ZIPCHECK -eq 1 ]; then
+	zipalign -f 4 $files /cache/$(basename $files);
+		if [ -e /cache/$(basename $files) ]; then
+			cp -f -p /cache/$(basename $files) $files
+			rm /cache/$(basename $files);
+		fi;
+fi;
+   done;
