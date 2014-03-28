@@ -1,0 +1,16 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	modified:   ROMKITCHEN/tools/scripts/refresh.bat
+#	new file:   aohoitxy.aah.txt
+#	new file:   mxx3cmdj.z2u.txt
+#
+
+support for LG G2 (LG-D802)
+support for LG Spirit (LG-MS870)
+support for Galaxy S4 tmobile (SGH-M919)
+support for Galaxy S5 (SM-G900F)

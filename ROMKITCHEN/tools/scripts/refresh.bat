@@ -345,6 +345,36 @@ set kernel=/dev/block/mmcblk0p8
 set tmp=
 call tools/devicedatabase/%device%
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-D802" "ro.product.model=LG-D802tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-D802tmp" "ro.product.model=LG-D802" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=LG-D802
+set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
+set tmp=
+call tools/devicedatabase/%device%
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-MS870" "ro.product.model=LG-MS870tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-MS870tmp" "ro.product.model=LG-MS870" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=LG-MS870
+set kernel=/dev/block/mmcblk0p7
+set tmp=
+call tools/devicedatabase/%device%
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919" "ro.product.model=SGH-M919tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919tmp" "ro.product.model=SGH-M919" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=SGH-M919
+echo set kernel=/dev/block/mmcblk0p20
+set tmp=
+call tools/devicedatabase/%device%
+)
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=SM-G900F" "ro.product.model=SM-G900Ftmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=SM-G900Ftmp" "ro.product.model=SM-G900F" >tmp.txt
 set /p tmp= < tmp.txt
