@@ -345,6 +345,36 @@ set kernel=/dev/block/mmcblk0p8
 set tmp=
 call tools/devicedatabase/%device%
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3100" "ro.product.model=GT-P3100tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3100tmp" "ro.product.model=GT-P3100" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P3100
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+call tools/devicedatabase/%device%
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3110" "ro.product.model=GT-P3110tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3110tmp" "ro.product.model=GT-P3110" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P3110
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+call tools/devicedatabase/%device%
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3113" "ro.product.model=GT-P3113tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P3113tmp" "ro.product.model=GT-P3113" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-N7105
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+call tools/devicedatabase/%device%
+)
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-D802" "ro.product.model=LG-D802tmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-D802tmp" "ro.product.model=LG-D802" >tmp.txt
 set /p tmp= < tmp.txt
