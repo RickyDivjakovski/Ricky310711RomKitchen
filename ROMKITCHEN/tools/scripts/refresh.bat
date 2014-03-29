@@ -435,7 +435,16 @@ set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 set tmp=
 call tools/devicedatabase/%device%
 )
-
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500" "ro.product.model=GT-P7500tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500tmp" "ro.product.model=GT-P7500" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P7500
+set kernel=/dev/block/platform/sdhci-tegra.3/by-num/p3 
+set tmp=
+call tools/devicedatabase/%device%
+)
 "tools/fart" "WORKING\system\build.prop" "ro.product.manufacturer=samsung" "ro.product.manufacturer=samsungtmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.manufacturer=samsungtmp" "ro.product.manufacturer=samsung" >tmp.txt
 set /p tmp= < tmp.txt
