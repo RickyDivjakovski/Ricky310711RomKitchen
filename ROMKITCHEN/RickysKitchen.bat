@@ -42,6 +42,7 @@ cd "%current%"
 :main
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -180,6 +181,7 @@ goto main
 :extrasmenu
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -573,6 +575,7 @@ goto extrasmenu
 :imagetools
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -660,6 +663,7 @@ goto imagetools
 :initdtweaks
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -753,6 +757,7 @@ goto initdtweaks
 :settings
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1063,6 +1068,7 @@ goto buildscript
 
 :buildscript
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 echo implementing rom name as display id..
 if not exist "tools/config/romsettings/displayid/DisplayIdToken" (
 cscript "tools/sed.vbs" "WORKING/system/build.prop" "ro.build.display.id=" "ro.build.display.id=%romname% - ">nul
@@ -1118,6 +1124,7 @@ goto main
 :aromaoptions
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1232,6 +1239,7 @@ if not exist WORKING/META-INF/com/google/android/aroma-config echo.
 if not exist WORKING/META-INF/com/google/android/aroma-config pause
 if not exist WORKING/META-INF/com/google/android/aroma-config goto aromaoptions
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1343,6 +1351,7 @@ if not exist WORKING/META-INF/com/google/android/aroma-config echo.
 if not exist WORKING/META-INF/com/google/android/aroma-config pause
 if not exist WORKING/META-INF/com/google/android/aroma-config goto aromaoptions
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1514,6 +1523,7 @@ goto main
 :extractionoptions
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1607,6 +1617,7 @@ goto extractionoptions
 :changewipes
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************
@@ -1718,6 +1729,7 @@ pause
 :information
 cls
 call tools/scripts/refresh
+call tools/scripts/checkdevice
 cls
 echo.
 echo ********************************************************************************

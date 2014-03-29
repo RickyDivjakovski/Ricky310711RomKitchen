@@ -1,5 +1,5 @@
 This is a list of the supported devices for the kitchen.
-the order for this file and for refresh.bat needs to be numeric then alphabetic.
+the order for this file and for checkdevice.bat needs to be numeric then alphabetic.
 if no header for the manufracturer is in the list, add one using a previous one as an example.
 i like to keep things neat and in order..
 
@@ -23,6 +23,7 @@ SM-N900T
 GT-P3100
 GT-P3110
 GT-P3113
+GT-P7500
 
 ###### LG
 
