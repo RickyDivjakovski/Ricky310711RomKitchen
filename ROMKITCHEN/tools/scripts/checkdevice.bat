@@ -160,6 +160,15 @@ set device=GT-P7500
 set kernel=/dev/block/platform/sdhci-tegra.3/by-num/p3 
 set tmp=
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7000" "ro.product.model=GT-N7000tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7000tmp" "ro.product.model=GT-N7000" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-N7000
+echo set kernel=/dev/block/mmcblk0p5
+set tmp=
+)
 
 
 echo ########################## LG >> tmp.txt
