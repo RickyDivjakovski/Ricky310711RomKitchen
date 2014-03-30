@@ -7,6 +7,15 @@ set kernel=##KERNELBLOCKPATH##
 echo ########################## SAMSUNG >> tmp.txt
 del tmp.txt
 
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I8262" "ro.product.model=GT-I8262tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I8262tmp" "ro.product.model=GT-I8262" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-I8262
+set kernel=/dev/block/mmcblk0p8
+set tmp=
+)
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I9000" "ro.product.model=GT-I9000tmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I9000tmp" "ro.product.model=GT-I9000" >tmp.txt
 set /p tmp= < tmp.txt
@@ -23,6 +32,15 @@ del tmp.txt
 if "%tmp%" == "WORKING\system\build.prop" (
 set device=GT-I9001
 set kernel=/dev/block/mmcblk0p8
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I9082" "ro.product.model=GT-I9082tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I9082tmp" "ro.product.model=GT-I9082" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-I9082
+set kernel=/dev/block/mmcblk0p5
 set tmp=
 )
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-I9100G" "ro.product.model=GT-I9100Gtmp" >tmp.txt
@@ -111,7 +129,34 @@ set tmp=
 set /p tmp= < tmp.txt
 del tmp.txt
 if "%tmp%" == "WORKING\system\build.prop" (
-set device=GT-N7105
+set device=GT-P3113
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5100" "ro.product.model=GT-P5100tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5100tmp" "ro.product.model=GT-P5100" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P5100
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5110" "ro.product.model=GT-P5110tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5110tmp" "ro.product.model=GT-P5110" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P5110
+set kernel=/dev/block/mmcblk0p5
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5113" "ro.product.model=GT-P5113tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P5113tmp" "ro.product.model=GT-P5113" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P5113
 set kernel=/dev/block/mmcblk0p5
 set tmp=
 )
@@ -122,6 +167,33 @@ del tmp.txt
 if "%tmp%" == "WORKING\system\build.prop" (
 set device=GT-P7500
 set kernel=/dev/block/platform/sdhci-tegra.3/by-num/p3 
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-S6310" "ro.product.model=GT-S6310tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-S6310tmp" "ro.product.model=GT-S6310" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-S6310
+set kernel=/dev/block/mmcblk0p8
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-I317" "ro.product.model=SGH-I317tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-I317tmp" "ro.product.model=SGH-I317" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=SGH-I317
+set kernel=/dev/block/mmcblk0p8
+set tmp=
+)
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919" "ro.product.model=SGH-M919tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919tmp" "ro.product.model=SGH-M919" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=SGH-M919
+set kernel=/dev/block/mmcblk0p20
 set tmp=
 )
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919" "ro.product.model=SGH-M919tmp" >tmp.txt
@@ -160,6 +232,15 @@ set device=SM-N9005
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 set tmp=
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SM-T320" "ro.product.model=SM-T320tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=SM-T320tmp" "ro.product.model=SM-T320" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=SM-T320
+set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
+set tmp=
+)
 
 
 echo ########################## LG >> tmp.txt
@@ -183,4 +264,26 @@ set device=LG-MS870
 set kernel=/dev/block/mmcblk0p7
 set tmp=
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-P760" "ro.product.model=LG-P760tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=LG-P760tmp" "ro.product.model=LG-P760" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=LG-P760
+set kernel=/dev/block/platform/omap/omap_hsmmc.1
+set tmp=
+)
 
+
+echo ########################## MOTOROLA >> tmp.txt
+del tmp.txt
+
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=XT1032" "ro.product.model=XT1032tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=XT1032tmp" "ro.product.model=XT1032" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=XT1032
+set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
+set tmp=
+)

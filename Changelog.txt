@@ -19,4 +19,19 @@ support Samsung GT-P3113
 ###### V1.03
 support Samsung GT-P7500
 
-
+###### V1.04
+fixed deodexing priv-app folder
+fixed signing/delete error
+updated aroma binary
+updated supersu binary and app
+support Samsung GT-S6310
+support Samsung GT-I8262
+support Samsung GT-I9082
+support Samsung SGH-I317 
+support Samsung GT-P5110
+support Samsung GT-P5100 
+support Samsung GT-P5113 
+support Samsung SM-T320
+support Samsung SGH-M919 
+support LG LG-P760
+support Motorola XT1032

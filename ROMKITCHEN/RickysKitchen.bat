@@ -154,13 +154,11 @@ echo.
 echo.
 echo.
 FOR %%F IN ("WORKING\system\app\*.apk") DO call "tools/scripts/deodexapk.bat" %%F %api% %compression%
-if exist "WOKRING/system/priv-app" (
 echo.
 echo.
 echo.
 echo Starting deodexing process for priv-app applications
 FOR %%F IN ("WORKING\system\app\*.apk") DO call "tools/scripts/deodexprivapp.bat" %%F %api% %compression%
-)
 echo.
 echo.
 echo.
@@ -1846,10 +1844,11 @@ echo                                     y/n
 echo.
 echo ********************************************************************************
 set /P selection=Make your decision:
-IF %selection% == n ren "ROMBUILD\tmp.zip" "unsigned_%romname%_%Date:~-7,2%-%Date:~-10,2%-%Date:~-4,4%_%TIME:~0,2%.%TIME:~3,2%.%TIME:~6,2%.zip"
+IF %selection% == n ren "ROMBUILD\tmp.zip" "unsigned_%romname%.zip"
 IF %selection% == n goto main
-java -Xmx%heapsize%m -jar "tools/signapk.jar" -w "tools/testkey.x509.pem" "tools/testkey.pk8" "ROMBUILD/tmp.zip" "ROMBUILD/%romname%_%Date:~-7,2%-%Date:~-10,2%-%Date:~-4,4%_%TIME:~0,2%.%TIME:~3,2%.%TIME:~6,2%.zip"
+java -Xmx%heapsize%m -jar "tools/signapk.jar" -w "tools/testkey.x509.pem" "tools/testkey.pk8" "ROMBUILD/tmp.zip" "ROMBUILD/signed_%romname%.zip"
 del /Q "ROMBUILD\tmp.zip">nul
+del /Q "ROMBUILD\unsigned_%romname%.zip">nul
 call tools/scripts/done
 goto main
 
