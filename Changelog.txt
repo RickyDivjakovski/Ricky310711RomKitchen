@@ -19,6 +19,4 @@ support Samsung GT-P3113
 ###### V1.03
 support Samsung GT-P7500
 
-###### v1.04
-support Samsung GT-N7000
 
