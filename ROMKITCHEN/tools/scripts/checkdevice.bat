@@ -70,15 +70,6 @@ set device=GT-I9505
 set kernel=/dev/block/mmcblk0p20
 set tmp=
 )
-"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7000" "ro.product.model=GT-N7000tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7000tmp" "ro.product.model=GT-N7000" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set device=GT-N7000
-echo set kernel=/dev/block/mmcblk0p5
-set tmp=
-)
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7100" "ro.product.model=GT-N7100tmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-N7100tmp" "ro.product.model=GT-N7100" >tmp.txt
 set /p tmp= < tmp.txt
