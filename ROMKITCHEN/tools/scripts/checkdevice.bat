@@ -124,6 +124,15 @@ set device=GT-N7105
 set kernel=/dev/block/mmcblk0p5
 set tmp=
 )
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500" "ro.product.model=GT-P7500tmp" >tmp.txt
+"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500tmp" "ro.product.model=GT-P7500" >tmp.txt
+set /p tmp= < tmp.txt
+del tmp.txt
+if "%tmp%" == "WORKING\system\build.prop" (
+set device=GT-P7500
+set kernel=/dev/block/platform/sdhci-tegra.3/by-num/p3 
+set tmp=
+)
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919" "ro.product.model=SGH-M919tmp" >tmp.txt
 "tools/fart" "WORKING\system\build.prop" "ro.product.model=SGH-M919tmp" "ro.product.model=SGH-M919" >tmp.txt
 set /p tmp= < tmp.txt
@@ -158,15 +167,6 @@ del tmp.txt
 if "%tmp%" == "WORKING\system\build.prop" (
 set device=SM-N9005
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500" "ro.product.model=GT-P7500tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "ro.product.model=GT-P7500tmp" "ro.product.model=GT-P7500" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set device=GT-P7500
-set kernel=/dev/block/platform/sdhci-tegra.3/by-num/p3 
 set tmp=
 )
 
