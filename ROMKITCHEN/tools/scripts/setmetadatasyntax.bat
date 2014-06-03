@@ -55,82 +55,81 @@ echo. >> WORKING\META-INF\com\google\android\updater-script
 
 echo detecting symlinks..
 echo ui_print("Symlinking"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("dumpstate", "/system/bin/dumpcrash"); >> WORKING\META-INF\com\google\android\updater-script
 echo symlink("libGLESv2.so", "/system/lib/libGLESv3.so"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/sh echo symlink("mksh", "/system/bin/sh"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/fonts/DroidSans-Bold.ttf echo symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/fonts/DroidSans.ttf echo symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/chcon echo symlink("toolbox", "/system/bin/chcon"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/cat echo symlink("toolbox", "/system/bin/cat");>> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/chmod echo symlink("toolbox", "/system/bin/chmod"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/chown echo symlink("toolbox", "/system/bin/chown"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/clear echo symlink("toolbox", "/system/bin/clear"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/cmp echo symlink("toolbox", "/system/bin/cmp"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/cp echo symlink("toolbox", "/system/bin/cp"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/date echo symlink("toolbox", "/system/bin/date"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/dd echo symlink("toolbox", "/system/bin/dd"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/df echo symlink("toolbox", "/system/bin/df"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/dmesg echo symlink("toolbox", "/system/bin/dmesg"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/du echo symlink("toolbox", "/system/bin/du"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/getenforce echo symlink("toolbox", "/system/bin/getenforce"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/getevent echo symlink("toolbox", "/system/bin/getevent"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/getprop echo symlink("toolbox", "/system/bin/getprop"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/getsebool echo symlink("toolbox", "/system/bin/getsebool"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/grep echo symlink("toolbox", "/system/bin/grep"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/hd echo symlink("toolbox", "/system/bin/hd"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/id echo symlink("toolbox", "/system/bin/id"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ifconfig echo symlink("toolbox", "/system/bin/ifconfig"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/iftop echo symlink("toolbox", "/system/bin/iftop"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/insmod echo symlink("toolbox", "/system/bin/insmod"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ioctl echo symlink("toolbox", "/system/bin/ioctl"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ionice echo symlink("toolbox", "/system/bin/ionice"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/kill echo symlink("toolbox", "/system/bin/kill"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ln echo symlink("toolbox", "/system/bin/ln"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/load_policy echo symlink("toolbox", "/system/bin/load_policy"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/log echo symlink("toolbox", "/system/bin/log"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ls echo symlink("toolbox", "/system/bin/ls"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/lsmod echo symlink("toolbox", "/system/bin/lsmod"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/lsof echo symlink("toolbox", "/system/bin/lsof"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/md5 echo symlink("toolbox", "/system/bin/md5"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/mkdir echo symlink("toolbox", "/system/bin/mkdir"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/mkswap echo symlink("toolbox", "/system/bin/mkswap"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/mount echo symlink("toolbox", "/system/bin/mount"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/mv echo symlink("toolbox", "/system/bin/mv"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/nandread echo symlink("toolbox", "/system/bin/nandread"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/netstat echo symlink("toolbox", "/system/bin/netstat"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/newfs_msdos echo symlink("toolbox", "/system/bin/newfs_msdos"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/notify echo symlink("toolbox", "/system/bin/notify"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/printenv echo symlink("toolbox", "/system/bin/printenv"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/ps echo symlink("toolbox", "/system/bin/ps"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/reboot echo symlink("toolbox", "/system/bin/reboot"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/readlink echo symlink("toolbox", "/system/bin/readlink"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/renice echo symlink("toolbox", "/system/bin/renice"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/restorecon echo symlink("toolbox", "/system/bin/restorecon"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/rm echo symlink("toolbox", "/system/bin/rm"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/rmdir echo symlink("toolbox", "/system/bin/rmdir"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/rmmod echo symlink("toolbox", "/system/bin/rmmod"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/route echo symlink("toolbox", "/system/bin/route"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/runcon echo symlink("toolbox", "/system/bin/runcon"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/schedtop echo symlink("toolbox", "/system/bin/schedtop"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/sendevent echo symlink("toolbox", "/system/bin/sendevent"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/setconsole echo symlink("toolbox", "/system/bin/setconsole"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/setenforce echo symlink("toolbox", "/system/bin/setenforce"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/setprop echo symlink("toolbox", "/system/bin/setprop"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/setsebool echo symlink("toolbox", "/system/bin/setsebool"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/sleep echo symlink("toolbox", "/system/bin/sleep"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/smd echo symlink("toolbox", "/system/bin/smd"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/start echo symlink("toolbox", "/system/bin/start"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/stop echo symlink("toolbox", "/system/bin/stop"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/swapoff echo symlink("toolbox", "/system/bin/swapoff"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/swapon echo symlink("toolbox", "/system/bin/swapon"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/sync echo symlink("toolbox", "/system/bin/sync"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/top echo symlink("toolbox", "/system/bin/top"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/touch echo symlink("toolbox", "/system/bin/touch"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/umount echo symlink("toolbox", "/system/bin/umount"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/uptime echo symlink("toolbox", "/system/bin/uptime"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/vmstat echo symlink("toolbox", "/system/bin/vmstat"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/watchprops echo symlink("toolbox", "/system/bin/watchprops"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/wipe echo symlink("toolbox", "/system/bin/wipe"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/freshsebool echo symlink("toolbox", "/system/bin/freshsebool"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("logcat", "/system/bin/lolcat"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("mksh", "/system/bin/sh"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("Roboto-Bold.ttf", "/system/fonts/DroidSans-Bold.ttf"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("Roboto-Regular.ttf", "/system/fonts/DroidSans.ttf"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/cat"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/chcon"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/chmod"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/chown"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/clear"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/cmp"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/cp"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/date"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/dd"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/df"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/dmesg"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/du"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/getenforce"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/getevent"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/getprop"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/getsebool"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/grep"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/hd"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/id"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ifconfig"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/iftop"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/insmod"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ioctl"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ionice"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/kill"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ln"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/load_policy"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/log"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ls"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/lsmod"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/lsof"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/md5"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/mkdir"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/mount"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/mv"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/nandread"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/netstat"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/newfs_msdos"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/notify"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/playback"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/printenv"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/ps"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/reboot"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/renice"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/restorecon"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/rm"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/rmdir"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/rmmod"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/route"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/runcon"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/schedtop"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/sendevent"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/setconsole"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/setenforce"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/setprop"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/setsebool"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/sleep"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/smd"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/start"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/stop"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/sync"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/top"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/touch"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/touchinput"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/umount"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/uptime"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/vmstat"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/watchprops"); >> WORKING\META-INF\com\google\android\updater-script
+echo symlink("toolbox", "/system/bin/wipe"); >> WORKING\META-INF\com\google\android\updater-script
 echo. >> WORKING\META-INF\com\google\android\updater-script
 
 echo setting meta-data..
@@ -255,22 +254,36 @@ echo. >> WORKING\META-INF\com\google\android\updater-script
 
 echo detecting root..
 if exist WORKING/system/xbin/su echo root detected
-if exist WORKING/system/xbin/su echo set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/xbin/daemonsu echo set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/bin/.ext/.su echo set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if exist WORKING/system/xbin/su echo run_program("/system/xbin/su", "--install"); >> WORKING\META-INF\com\google\android\updater-script
+if exist WORKING/system/xbin/su echo ui_print("Initializing Root"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/xbin/su echo set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/xbin/daemonsu echo set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/bin/.ext echo set_metadata("/system/bin/.ext", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/bin/.ext/.su echo set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/etc/install-recovery.sh echo set_metadata("/system/etc/install-recovery.sh", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/etc/init.d/99SuperSUDaemon echo set_metadata("/system/etc/init.d/99SuperSUDaemon", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/etc/.installed_su_daemon echo set_metadata("/system/etc/.installed_su_daemon", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/app/Superuser.apk echo set_metadata("/system/app/Superuser.apk", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if exist WORKING/system/xbin/su echo run_program("/system/xbin/su", "--install"); >> WORKING/META-INF/com/google/android/updater-script
 if not exist WORKING/system/xbin/su echo root not detected
-if not exist WORKING/system/xbin/su echo ##ROOTLINE##set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if not exist WORKING/system/xbin/daemonsu echo ##ROOTLINE##set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if not exist WORKING/system/bin/.ext/.su echo ##ROOTLINE##set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING\META-INF\com\google\android\updater-script
-if not exist WORKING/system/xbin/su echo ##ROOTLINE##run_program("/system/xbin/su", "--install"); >> WORKING\META-INF\com\google\android\updater-script
-echo. >> WORKING\META-INF\com\google\android\updater-script
+if not exist WORKING/system/xbin/su echo ##ROOTLINE##ui_print("Initializing Root"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/xbin/su echo ##ROOTLINE##set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/xbin/daemonsu echo ##ROOTLINE##set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/bin/.ext echo ##ROOTLINE##set_metadata("/system/bin/.ext", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/bin/.ext/.su echo ##ROOTLINE##set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/etc/install-recovery.sh echo ##ROOTLINE##set_metadata("/system/etc/install-recovery.sh", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/etc/init.d/99SuperSUDaemon echo ##ROOTLINE##set_metadata("/system/etc/init.d/99SuperSUDaemon", "uid", 0, "gid", 0, "mode", 0755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/etc/.installed_su_daemon echo ##ROOTLINE##set_metadata("/system/etc/.installed_su_daemon", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/app/Superuser.apk echo ##ROOTLINE##set_metadata("/system/app/Superuser.apk", "uid", 0, "gid", 0, "mode", 0644, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+if not exist WORKING/system/xbin/su echo ##ROOTLINE##run_program("/system/xbin/su", "--install"); >> WORKING/META-INF/com/google/android/updater-script
+echo. >> WORKING/META-INF/com/google/android/updater-script
 
 echo detecting busybox..
 if exist WORKING/system/xbin/busybox echo busybox detected
+if exist WORKING/system/xbin/busybox echo ui_print("Installing Busybox"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/xbin/busybox echo symlink("/system/xbin/busybox", "/system/bin/busybox"); >> WORKING\META-INF\com\google\android\updater-script
 if exist WORKING/system/xbin/busybox echo run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin"); >> WORKING\META-INF\com\google\android\updater-script
 if not exist WORKING/system/xbin/busybox echo busybox not detected
+if not exist WORKING/system/xbin/busybox echo ##BUSYBOXLINE##ui_print("Installing Busybox"); >> WORKING/META-INF/com/google/android/updater-script
 if not exist WORKING/system/xbin/busybox echo ##BUSYBOXLINE##symlink("/system/xbin/busybox", "/system/bin/busybox"); >> WORKING\META-INF\com\google\android\updater-script
 if not exist WORKING/system/xbin/busybox echo ##BUSYBOXLINE##run_program("/system/xbin/busybox", "--install", "-s", "/system/xbin"); >> WORKING\META-INF\com\google\android\updater-script
 echo. >> WORKING\META-INF\com\google\android\updater-script
@@ -278,7 +291,7 @@ echo. >> WORKING\META-INF\com\google\android\updater-script
 echo adding app backup lines
 if %autobackup% == No echo ##BACKUPAPPSLINE##ui_print("Restoring Apps"); >> WORKING\META-INF\com\google\android\updater-script
 if %autobackup% == No echo ##BACKUPAPPSLINE##package_extract_file("tmp/apprestore.sh", "/tmp/apprestore.sh"); >> WORKING\META-INF\com\google\android\updater-script
-if %autobackup% == No echo ##BACKUPAPPSLINE##set_metadata("apprestore.sh", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0"); >> WORKING\META-INF\com\google\android\updater-script
+if %autobackup% == No echo ##BACKUPAPPSLINE##set_metadata("/tmp/apprestore.sh", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:system_file:s0"); >> WORKING\META-INF\com\google\android\updater-script
 if %autobackup% == No echo ##BACKUPAPPSLINE##run_program("/tmp/apprestore.sh"); >> WORKING\META-INF\com\google\android\updater-script
 if %autobackup% == Yes echo ui_print("Restoring Apps"); >> WORKING\META-INF\com\google\android\updater-script
 if %autobackup% == Yes echo package_extract_file("tmp/apprestore.sh", "/tmp/apprestore.sh"); >> WORKING\META-INF\com\google\android\updater-script

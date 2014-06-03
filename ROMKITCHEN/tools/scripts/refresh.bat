@@ -1,50 +1,39 @@
-"tools/cecho" {0A} REFRESHING ROM STATS{#}
-set romname=None
-set romversion=None
-set romauthor=None
-set romdate=None
-set aromaconfig=No
-set romdevice=None
-set architecture=None
-set romlicence=None
-set romtheme=None
-set initdconfig=No
-set knox=Yes
-set rootconfig=No
-set busyboxconfig=No
-set deodexconfig=No
-set bitcodeverification=Yes
-set installationconfig=No
-set densityconfig=Stock
-set sysrwrobinary=No
-set insecureramdisk=No
+"tools/cecho" {0A} REFRESHING STATS{#}
+
+set romname=
+set romversion=
+set romauthor=
+set romdate=
+set aromaconfig=
+set romdevice=
+set architecture=
+set romlicence=
+set romtheme=
+set initdconfig=
+set rootconfig=
+set busyboxconfig=
+set deodexconfig=
+set bitcodeverification=
+set installationconfig=
+set densityconfig=
+set sysrwrobinary=
+set insecureramdisk=
 set wipedata=
-set devicetype=normal
+set devicetype=
 set wipecache=
 set api=
-set compression=
-set heapsize=
-set syntax=
 set autobackup=
 set dataextraction=
 set bootanimation=
 set gpurendering=
 
-set tmpdata=
-FOR %%F IN (tools/config/toolsettings/compression/*) DO (
+set /A count=0
+FOR %%F IN (tools/config/romsettings/romname/*) DO (
 set tmpdata=%%~nF%%~xF
+set /A count+=1
 )
-set compression=%tmpdata%
-set tmpdata=
-FOR %%F IN (tools/config/toolsettings/heapsize/*) DO (
-set tmpdata=%%~nF%%~xF
-)
-set heapsize=%tmpdata%
-set tmpdata=
-FOR %%F IN (tools/config/toolsettings/syntax/*) DO (
-set tmpdata=%%~nF%%~xF
-)
-set syntax=%tmpdata%
+if %count%==0 goto complete
+
 set tmpdata=
 FOR %%F IN (tools/config/romsettings/romname/*) DO (
 set tmpdata=%%~nF%%~xF
@@ -81,192 +70,81 @@ set tmpdata=%%~nF%%~xF
 )
 set romtheme=%tmpdata%
 
-"tools/fart" "WORKING\system\build.prop" "abi=x86" "abi=x86tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "abi=x86tmp" "abi=x86" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set architecture=x86
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "abi=arm" "abi=armtmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "abi=armtmp" "abi=arm" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set architecture=arm
-set tmp=
+if exist WORKING/system/build.prop (
+findstr "ro.product.cpu.abi=" "WORKING\system\build.prop" >tmp.txt
+cscript "tools/sed.vbs" "tmp.txt" "ro.product.cpu.abi=" "">nul
+cscript "tools/sed.vbs" "tmp.txt" "eabi-v6a" "">nul
+cscript "tools/sed.vbs" "tmp.txt" "eabi-v7a" "">nul
+cscript "tools/sed.vbs" "tmp.txt" "eabi-v8a" "">nul
+set /p architecture=<tmp.txt
+del "tmp.txt"
 )
 
-"tools/fart" "WORKING\system\build.prop" "sdk=19" "sdk=19tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=19tmp" "sdk=19" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=19
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=18" "sdk=18tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=18tmp" "sdk=18" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=18
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=17" "sdk=17tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=17tmp" "sdk=17" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=17
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=16" "sdk=16tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=16tmp" "sdk=16" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=16
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=15" "sdk=15tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=15tmp" "sdk=15" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=15
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=14" "sdk=14tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=14tmp" "sdk=14" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=14
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=13" "sdk=13tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=13tmp" "sdk=13" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=13
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=12" "sdk=12tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=12tmp" "sdk=12" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=12
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=11" "sdk=11tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=11tmp" "sdk=11" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=11
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=10" "sdk=10tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=10tmp" "sdk=10" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=10
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=9" "sdk=9tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=9tmp" "sdk=9" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=18
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=8" "sdk=8tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=8tmp" "sdk=8" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=8
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=7" "sdk=7tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=7tmp" "sdk=7" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=7
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=6" "sdk=6tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=6tmp" "sdk=6" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=6
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=5" "sdk=5tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=5tmp" "sdk=5" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=5
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=4" "sdk=4tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=4tmp" "sdk=4" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=4
-set tmp=
-)
-"tools/fart" "WORKING\system\build.prop" "sdk=3" "sdk=3tmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "sdk=3tmp" "sdk=3" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
-set api=3
-set tmp=
+if exist WORKING/system/build.prop (
+findstr "ro.build.version.sdk=" "WORKING\system\build.prop" >tmp.txt
+cscript "tools/sed.vbs" "tmp.txt" "ro.build.version.sdk=" "">nul
+set /p api=<tmp.txt
+del "tmp.txt"
 )
 
-"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_perm" "set_permtmp" >tmp.txt
-"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_permtmp" "set_perm" >tmp.txt
-set /p tmp= < tmp.txt
+if exist WORKING/system/build.prop (
+findstr "ro.sf.lcd_density=" "WORKING\system\build.prop" >tmp.txt
+cscript "tools/sed.vbs" "tmp.txt" "ro.sf.lcd_density=" "">nul
+set /p density=<tmp.txt
+del "tmp.txt"
+)
+
+findstr "dalvik.vm.dexopt-flags=v=n,o=v" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+set bitcodetoggle=x
+)
+if not exist tmp.txt (
+set bitcodetoggle= 
+)
 del tmp.txt
-if "%tmp%" == "WORKING\META-INF\com\google\android\updater-script" (
+
+findstr "debug.sf.hw=1" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+set gpurenderingtoggle= 
+)
+if not exist tmp.txt (
+set gpurenderingtoggle=x
+)
+del tmp.txt
+
+findstr "debug.sf.nobootanimation=1" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+set bootanimationtoggle= 
+)
+if not exist tmp.txt (
+set bootanimationtoggle=x
+)
+del tmp.txt
+
+if exist WORKING/META-INF/com/google/android/updater-script (
+findstr "set_perm" "WORKING\META-INF\com\google\android\updater-script" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
 set currentsyntax=set_perm
-set tmp=
+del "tmp.txt
 )
-
-"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_metadata" "set_metadatatmp" >tmp.txt
-"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_metadatatmp" "set_metadata" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\META-INF\com\google\android\updater-script" (
+findstr "set_metadata" "WORKING\META-INF\com\google\android\updater-script" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
 set currentsyntax=set_metadata
-set tmp=
+del "tmp.txt
+)
 )
 
-"tools/fart" "WORKING\system\build.prop" "ro.product.manufacturer=samsung" "ro.product.manufacturer=samsungtmp" >tmp.txt
-"tools/fart" "WORKING\system\build.prop" "ro.product.manufacturer=samsungtmp" "ro.product.manufacturer=samsung" >tmp.txt
-set /p tmp= < tmp.txt
-del tmp.txt
-if "%tmp%" == "WORKING\system\build.prop" (
+if exist WORKING/system/build.prop (
+findstr "ro.product.manufacturer=samsung" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
 set devicetype=samsung
-set tmp=
+del "tmp.txt
+)
 )
 
 set autobackup=No
 if exist "WORKING/tmp/appbackup.sh" (
-if exist "WORKING/tmp/apprestore.sh" echo AUTOGENERATED > tools/config/romsettings/autobackup/BackupToken
 if exist "WORKING/tmp/apprestore.sh" set autobackup=Yes
-if exist "WORKING/tmp/apprestore.sh" if exist "tools/config/romsettings/autobackup/No" del "tools/config/romsettings/autobackup/No"
 )
 
 if exist WORKING/META-INF/com/google/android/aroma (
@@ -274,49 +152,6 @@ if exist WORKING/META-INF/com/google/android/aroma-config (
 if exist WORKING/META-INF/com/google/android/update-binary (
 if exist WORKING/META-INF/com/google/android/update-binary-installer (
 set aromaconfig=Yes
-)
-)
-)
-)
-
-set knox=Yes
-if not exist WORKING/system/app/KNOXAgent.apk (
-if not exist WORKING/system/app/KNOXAgent.odex (
-if not exist WORKING/system/app/KLMSAgent.apk (
-if not exist WORKING/system/app/KNOXAgent.odex (
-if not exist WORKING/system/app/KnoxAttestationAgent.apk (
-if not exist WORKING/system/app/KnoxAttestationAgent.odex (
-if not exist WORKING/system/app/ContainerAgent.apk (
-if not exist WORKING/system/app/ContainerAgent.odex (
-if not exist WORKING/system/app/ContainerEventsRelayManager.apk (
-if not exist WORKING/system/app/ContainerEventsRelayManager.odex (
-if not exist WORKING/system/app/KNOXStub.apk (
-if not exist WORKING/system/app/KNOXStub.odex (
-if not exist WORKING/system/priv-app/KLMSAgent.apk (
-if not exist WORKING/system/priv-app/KLMSAgent.odex (
-if not exist WORKING/system/etc/secure_storage/com.sec.knox.store (
-if not exist WORKING/system/lib/libknoxdrawglfunction.so (
-if not exist WORKING/system/containers (
-if not exist WORKING/system/preloadedkiosk (
-if not exist WORKING/system/preloadedsso (
-set knox=No
-echo AUTOGENERATED > tools/config/romsettings/knox/KnoxToken
-if exist "tools/config/romsettings/knox/No" del "tools/config/romsettings/knox/No"
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
-)
 )
 )
 )
@@ -335,82 +170,57 @@ if exist "tools/config/romsettings/dataextraction/No" del "tools/config/romsetti
 )
 
 set rootconfig=No
-echo AUTOGENERATED > tools/config/romsettings/root/No
-if exist "tools/config/romsettings/root/RootToken" del "tools\config\romsettings\root\RootToken"
 if exist "WORKING/system/xbin/su" (
 if exist "WORKING/system/bin/.ext/.su" (
 if exist "WORKING/system/etc/.installed_su_daemon" (
 if exist "WORKING/system/etc/init.d/99SuperSUDaemon" (
 if exist "WORKING/system/xbin/daemonsu" (
 set rootconfig=Yes
-echo AUTOGENERATED > tools/config/romsettings/root/RootToken
 )
 )
 )
 )
 )
-if exist "tools/config/romsettings/root/No" del "tools\config\romsettings\root\No"
 
 set busyboxconfig=No
-echo AUTOGENERATED > tools/config/romsettings/busybox/No
-if exist "tools/config/romsettings/busybox/BusyboxToken" del "tools\config\romsettings\busybox\BusyboxToken"
 if exist "WORKING/system/xbin/busybox" set busyboxconfig=Yes
-if exist "WORKING/system/xbin/busybox" echo AUTOGENERATED > tools/config/romsettings/busybox/BusyboxToken
-if exist "tools/config/romsettings/busybox/BusyboxToken" del "tools\config\romsettings\busybox\BusyboxToken"
 
 set initdconfig=No
 if exist "WORKING/system/etc/init.d" set initdconfig=Possibly
-if exist "WORKING/system/bin/debuggerd.orig" set initdconfig=Yes
+if exist "WORKING/system/bin/debuggerd.real" set initdconfig=Yes
 
 set deodexconfig=No
-if exist "tools/config/romsettings/deodexed/DeodexToken" del "tools\config\romsettings\deodexed\DeodexToken"
-echo AUTOGENERATED > tools/config/romsettings/deodexed/No
-if not exist WORKING/system/app/*.odex set deodexconfig=Apps
-if not exist WORKING/system/framework/*.odex set deodexconfig=Framework
-if not exist WORKING/system/app/*.odex echo AUTOGENERATED > tools/config/romsettings/deodexed/Apps
-if not exist WORKING/system/framework/*.odex echo AUTOGENERATED > tools/config/romsettings/deodexed/Framework
-if not exist WORKING/system/app/*.odex echo AUTOGENERATED > tools/config/romsettings/deodexed/Deodex
-if not exist WORKING/system/framework/*.odex ren tools\config\romsettings\deodexed\Deodex DeodexToken
-if not exist "tools/config/romsettings/deodexed/No" del "tools/config/romsettings/deodexed/No"
-if not exist "tools/config/romsettings/deodexed/No" del "tools/config/romsettings/deodexed/No"
-if exist tools/config/romsettings/deodexed/DeodexToken set deodexconfig=Yes
-if not exist WORKING/system/app/*.apk set deodexconfig=No files
-if not exist WORKING/system/framework/*.jar set deodexconfig=No files
-if exist "tools/config/romsettings/deodexed/DeodexToken" (
-if exist "tools/config/romsettings/deodexed/No" del "tools\config\romsettings\deodexed\No"
-if exist "tools/config/romsettings/deodexed/Deodex" del "tools\config\romsettings\deodexed\Deodex"
-if exist "tools/config/romsettings/deodexed/Apps" del "tools\config\romsettings\deodexed\Apps"
-if exist "tools/config/romsettings/deodexed/Framework" del "tools\config\romsettings\deodexed\Framework"
+if not exist WORKING/system/framework/*.odex (
+if not exist WORKING/system/app/*.odex (
+set deodexconfig=Yes
+)
 )
 
 set sysrwrobinary=No
-echo AUTOGENERATED > tools/config/romsettings/sysrwro/No
-if exist "tools/config/romsettings/sysrwro/SysrwroToken" del "tools\config\romsettings\sysrwro\SysrwroToken"
-if exist "WORKING/system/bin/sysrw" set sysrwrobinary=Yes
-if exist "WORKING/system/bin/sysrw" echo AUTOGENERATED > tools/config/romsettings/sysrwro/SysrwroToken
-if exist "tools/config/romsettings/sysrwro/No" del "tools\config\romsettings\sysrwro\No"
+if exist "WORKING/system/bin/sysrw" (
+if exist "WORKING/system/bin/sysro" (
+set sysrwrobinary=Yes
+)
+)
 
 set insecureramdisk=No
 if exist "tools/config/romsettings/insecureramdisk/InsecureToken" set insecureramdisk=Yes
 
 set bitcodeverification=Yes
 if exist "tools/config/romsettings/bitcodeverification/BitcodeToken" set bitcodeverification=No
-if exist "tools/config/romsettings/bitcodeverification/BitcodeToken" echo AUTOGENERATED > tools/config/romsettings/bitcodeverification/BitcodeToken
 
 set bootanimation=Yes
 if exist "tools/config/romsettings/bootanimation/AnimationToken" set bootanimation=No
-if exist "tools/config/romsettings/bootanimation/AnimationToken" echo AUTOGENERATED > tools/config/romsettings/bootanimation/AnimationToken
 
 set gpurendering=Yes
 if exist "tools/config/romsettings/gpurendering/GPUToken" set gpurendering=No
-if exist "tools/config/romsettings/gpurendering/GPUToken" echo AUTOGENERATED > tools/config/romsettings/gpurendering/GPUToken
 
 if exist "tools/config/romsettings/wipes/WipedataToken" set wipedata=, data
 if exist "tools/config/romsettings/wipes/WipecacheToken" set wipecache=, cache
 if exist "tools/config/romsettings/wipes/WipedataToken" if exist "WORKING/META-INF/com/google/android/updater-script" cscript "tools/sed.vbs" "WORKING/META-INF/com/google/android/updater-script" "##WIPELINE1##" "">nul
-if exist "tools/config/romsettings/wipes/WipedataToken" if exist "WORKING/META-INF/com/google/android/updater-script" cscript "tools/sed.vbs" "WORKING/META-INF/com/google/android/updater-script" "##WIPELINE1##" "">nul
-if exist "tools/config/romsettings/wipes/WipecacheToken" if exist "WORKING/META-INF/com/google/android/updater-script" cscript "tools/sed.vbs" "WORKING/META-INF/com/google/android/updater-script" "##WIPELINE2##" "">nul
 if exist "tools/config/romsettings/wipes/WipecacheToken" if exist "WORKING/META-INF/com/google/android/updater-script" cscript "tools/sed.vbs" "WORKING/META-INF/com/google/android/updater-script" "##WIPELINE2##" "">nul
 
-if exist WORKING/META-INF/com/google/android/updater-script "tools/dos2unix" WORKING/META-INF/com/google/android/updater-script>nul
-if exist WORKING/META-INF/com/google/android/aroma-config "tools/dos2unix" WORKING/META-INF/com/google/android/aroma-config>nul
+if exist WORKING/META-INF/com/google/android/updater-script "tools/dos2unix" -q WORKING/META-INF/com/google/android/updater-script>nul
+if exist WORKING/META-INF/com/google/android/aroma-config "tools/dos2unix" -q WORKING/META-INF/com/google/android/aroma-config>nul
+
+:complete

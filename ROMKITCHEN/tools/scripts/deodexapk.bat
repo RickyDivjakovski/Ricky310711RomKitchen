@@ -1,5 +1,6 @@
 echo off
 if (%1)==() GOTO complete
+"tools/cecho" deodexing %~n1 
 IF NOT EXIST "WORKING/system/app/%~n1.odex" goto skip
 mkdir "WORKING/system/app/tmp_%~n1"
 
@@ -11,22 +12,24 @@ if errorlevel 1 goto error
 
 IF NOT EXIST "WORKING\system\app\tmp_%~n1\classes.dex" goto error
 
-move "WORKING\system\app\%~n1.apk" "WORKING/system/app/tmp_%~n1/">nul
-"tools/7za.exe" a -tzip WORKING\system\app\tmp_%~n1\%~n1.apk "WORKING\system\app\tmp_%~n1\classes.dex" -mx%3>nul
 del "WORKING\system\app\%~n1.odex"
+move "WORKING\system\app\%~n1.apk" "WORKING/system/app/tmp_%~n1/">nul
+cd "WORKING/system/app/tmp_%~n1/"
+"../../../../tools/7za.exe" a -tzip %~n1.apk "classes.dex" -mx%3>nul
+cd "../../../../"
 move "WORKING\system\app\tmp_%~n1\%~n1.apk" "WORKING/system/app/%~n1.apk">nul
 
 rmdir /s /q "WORKING/system/app/tmp_%~n1"
 rmdir /s /q out
-"tools/cecho" %~n1 {0A}SUCCEEDED{#}
+"tools/cecho"  {0A}SUCCEEDED{#}
 echo.
 goto complete
 :skip
-"tools/cecho" %~n1 {0A}SUCCEEDED{#}
+"tools/cecho"  {0A}SUCCEEDED{#}
 echo.
 goto complete
 :error
-"tools/cecho" %~n1 {0C}FAILED{#}
+"tools/cecho"  {0C}FAILED{#}
 echo.
 if exist "WORKING/system/app/tmp_%~n1" rmdir /s /q "WORKING/system/app/tmp_%~n1"
 rmdir /s /q "out"
