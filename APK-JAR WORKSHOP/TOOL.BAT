@@ -1,5 +1,16 @@
 @ECHO off
 mode con:cols=123 lines=40
+set /A count+=1
+if %count%==1 del "tools\LOG.TXT"
+if %count%==1 echo. >> tools/LOG.TXT
+if %count%==1 echo ################################################################################ >> tools/LOG.TXT
+if %count%==1 echo START DATE: %Date:~-7,2%-%Date:~-10,2%-%Date:~-4,4% >> tools/LOG.TXT
+if %count%==1 echo START TIME:%TIME:~0,2%.%TIME:~3,2%.%TIME:~6,2% >> tools/LOG.TXT
+if %count%==1 echo. >> tools/LOG.TXT
+if %count%==1 echo. >> tools/LOG.TXT
+if %count%==1 echo. >> tools/LOG.TXT
+if %count%==1 call TOOL 0 2>> tools/LOG.TXT
+set count=0
 :: BatchGotAdmin
 :====================================-
 REM  ==> Check for permissions
@@ -48,7 +59,6 @@ set jar=
 java -version 
 IF errorlevel 1 goto nojava
 ECHO  Java installation detected >> tools/VERBALLOG.TXT
-set /A count=0
 ECHO  Compression level 9 >> tools/VERBALLOG.TXT
 ECHO  Java heap size 512 >> tools/VERBALLOG.TXT
 ECHO  Working apk %apk% >> tools/VERBALLOG.TXT

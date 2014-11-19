@@ -3,21 +3,31 @@ the order for this file and for checkdevice.bat needs to be numeric then alphabe
 if no header for the manufracturer is in the list, add one using a previous one as an example.
 i like to keep things neat and in order..
 
+Support count=75 devices
+
 #================================================================================================#
 
 ###### SAMSUNG
 
+GT-I8160
+GT-I8190
+GT-I8190N
 GT-I8262 
 GT-I9000
 GT-I9001
+GT-I9070
 GT-I9082 
 GT-I9100G
+GT-I9105P
 GT-I9300
 GT-I9305
 GT-I9500
 GT-I9505
+GT-I9512
 GT-N7100
 GT-N7105
+GT-N8010
+GT-N8013
 GT-P3100
 GT-P3110
 GT-P3113
@@ -26,9 +36,17 @@ GT-P5110
 GT-P5113
 GT-P7500
 GT-S6310
+GT-S7580L
+SCH-I545 
+SCH-I605 
 SGH-I317
+SGH-1747 
 SGH-M919
 SM-G900F
+SM-G900P
+SM-G900V
+SM-N900 
+SM-G906S
 SM-N9005
 SM-N900T
 SM-T320
@@ -36,12 +54,61 @@ SM-T320
 
 ###### LG
 
+LG-D800
+LG-D801
 LG-D802
+LG-D950
+LG-E612
+LGLS740
 LG-MS870
+LG-P710
 LG-P760
-
+LG-P875H
+LG-P880
+LG-P990 
+VS985
 
 
 ###### MOTOROLA
 
+XT1031
 XT1032 
+XT1033
+DROID RAZR 
+
+
+###### HAUWEI
+
+P6-U06
+G526-L22
+Ascend Y300
+
+
+###### HTC
+
+831C
+
+
+###### SONY
+
+C1505
+C5502
+C6603
+D6503
+LT25i
+LT29i
+LT30i
+ST25i
+ST25a
+MT27i
+MT27a
+
+
+###### MEDIATEK
+
+GSmart Aku A1
+
+
+###### I-MOBILE
+
+IQ5.1 Pro 

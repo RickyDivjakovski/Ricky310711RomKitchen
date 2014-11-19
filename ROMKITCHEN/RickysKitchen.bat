@@ -1,13 +1,23 @@
 @echo off
-echo ======================================== Copyright (C) 2014 Ricky Divjakovski(Ricky310711) ==============================================
-echo   you cannot redistribute it and/or modify in any way, commits are welcome on git and will be reviewed - ricky310711@github
-echo   This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of    
-echo   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                                
-echo   This tool was originally part of AET(android everything tool) also made by me(ricky310711).
-echo   I do not ask for money but if you would like to contribute to my work go ahead and donate and i will appreciate you and add you to
-echo   the "Special thanks list" where all donatotors will be listed
-echo   This program is designed for users to experiance android the way they want it and be able to release roms with their creatvity included
-echo =========================================================================================================================================
+mode con:cols=143 lines=17
+"tools/cecho" {0A}========================================={#}{0C} Copyright (C) 2014 Ricky Divjakovski(Ricky310711) {#}{0A}==============================================={#}
+echo.
+"tools/cecho" {0A}*{#} you cannot redistribute this and/or modify in any way, commits are welcome on git and will be reviewed - ricky310711@github             {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of          {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.                                                                                    {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} This tool was originally part of AET(android everything tool) also made by me(ricky310711).                                             {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} I do not ask for money but if you would like to contribute to my work go ahead and donate and i will appreciate you and add you to      {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} the "Special thanks list" where all donators will be listed                                                                             {0A}*{#}
+echo.
+"tools/cecho" {0A}*{#} This program is designed for users to experiance android the way they want it and be able to release roms with their creatvity included {0A}*{#}
+echo.
+"tools/cecho" {0A}==========================================================================================================================================={#}
+echo.
 cls
 
 :: BatchGotAdmin
@@ -33,15 +43,43 @@ if '%errorlevel%' NEQ '0' (
     if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )
     pushd "%CD%"
     CD /D "%~dp0"
-@echo off
-cd >> tmp.log
-set /p current=< tmp.log
-del tmp.log       
+echo. > tmp.txt
+cd >> tmp.txt
+set /p current=< tmp.txt
+del tmp.txt
 cd "%current%"
+mode con:cols=80 lines=60
+
+"tools/cecho"                      {0A}      BOOTING RICKYS ROM KITCHEN {#}
+echo.
+echo ********************************************************************************
+"tools/cecho" {0A}=====^>{#}
+echo. 
+echo ********************************************************************************
+ping -n 1 -w 100 127.0.0.1 > nul
+cls
+"tools/cecho"                      {0A}      BOOTING RICKYS ROM KITCHEN {#}
+echo.
+echo ********************************************************************************
+"tools/cecho" {0A}====================================^> {#}
+echo. 
+echo ********************************************************************************
+ping -n 2 -w 200 127.0.0.1 > nul
+cls
+"tools/cecho"                      {0A}      BOOTING RICKYS ROM KITCHEN {#}
+echo.
+echo ********************************************************************************
+"tools/cecho" {0A}===============================================================^>{#}
+echo. 
+echo ********************************************************************************
+ping -n 2 -w 200 127.0.0.1 > nul
+cls
 
 :main
 cls
+call tools/scripts/refreshsettings
 call tools/scripts/refresh
+call tools/scripts/refreshsettings
 call tools/scripts/checkdevice
 cls
 echo.
@@ -77,6 +115,10 @@ echo.
 echo.
 "tools/cecho"   {0A}E{#} - Extras menu
 echo.
+"tools/cecho"   {0A}M{#} - Modules menu
+echo.
+echo.
+"tools/cecho"   {0A}Z{#} - Import/Export project
 echo.
 "tools/cecho"   {0A}I{#} - Show working information
 echo.
@@ -107,6 +149,11 @@ if %selection% == t goto initdtweaks
 if %selection% == T goto initdtweaks
 if %selection% == e goto extrasmenu
 if %selection% == E goto extrasmenu
+if %selection% == m goto modulesmenu
+if %selection% == m goto modulesmenu
+if %selection% == M goto modulesmenu
+if %selection% == z goto importexport
+if %selection% == Z goto importexport
 if %selection% == i goto information
 if %selection% == I goto information
 if %selection% == b goto buildrom
@@ -115,19 +162,87 @@ if %selection% == p goto pushbuild
 if %selection% == P goto pushbuild
 if %selection% == d goto donate
 if %selection% == D goto donate
-if %selection% == 99 goto test
 set selection=RICKY310711
 "tools/cecho" {0C}OOOPS, looks like you typed something wrong..{#}
 echo.
 pause>nul
 goto main
 
-:test 
-call tools/scripts/buildaroma
-pause
+:modulesmenu
+cls
+call tools/scripts/refresh
+call tools/scripts/checkdevice
+call tools/scripts/modulesmenu
+call tools/scripts/modulesitems
+IF %selection% == 0 goto main
+goto modulesmenu
+
+:importexport
+cls
+echo.
+echo ********************************************************************************
+echo.
+echo  This allows you to import or export a project to and from other pc's made with
+echo  this kitchen.
+echo.
+"tools/cecho"    {0A}1{#} - Import project to an export package(Export.KtnPkg)
+echo.
+"tools/cecho"    {0A}2{#} - Export project from "Export.KtnPkg" package
+echo.
+"tools/cecho"    {0A}0{#} - Go back
+echo.
+echo.
+echo ********************************************************************************
+echo.
+set selection=RICKY310711
+set /P selection=Make your decision:
+IF %selection% == 1 goto importproject
+IF %selection% == 2 goto exportproject
 goto main
 
-if exist "C:\Program Files (x86)\Notepad++\notepad++.exe" "C:\Program Files (x86)\Notepad++\notepad++" "WORKING/META-INF/com/google/android/aroma-config"
+:importproject
+cls
+echo ********************************************************************************
+echo.
+echo  Making export package.. this will take a while.
+echo  The "Export.KtnPkg" package will be in the ROMBUILD folder after completion.
+echo.
+echo ********************************************************************************
+echo Making export package
+if exist "ROMBUILD/Export.KtnPkg" del "ROMBUILD/Export.KtnPkg"
+call "tools/7za.exe" a -mx9 -tzip "ROMBUILD/Export.KtnPkg" WORKING tools/config/romsettings tools/config/toolsettings.cfg >nul
+call tools/scripts/done
+goto importexport
+
+:exportproject
+cls
+echo ********************************************************************************
+echo.
+echo  This will export a project from a "Export.KtnPkg" package, place it inside
+echo  the ORIGINAL folder and press enter.
+echo  NOTE: this will delete the current project(if there is one) and replace
+echo  with the exported project, also some kitchen settings will be changed.
+echo.
+echo ********************************************************************************
+pause
+cls
+echo ********************************************************************************
+echo.
+echo  Exporting package.. this will take a while.
+echo  When complete your project is exported.
+echo.
+echo ********************************************************************************
+echo Exporting project
+rmdir /s /q "WORKING"
+rmdir /s /q "tools/config/romsettings"
+del "tools/config/toolsettings.cfg"
+cd ORIGINAL
+ren "Export.KtnPkg" "Export.KtnPkg.zip"
+"../tools/7za" x "Export.KtnPkg.zip" -o"../"
+ren Export.KtnPkg.zip Export.KtnPkg
+cd ..
+call tools/scripts/done
+goto importexport
 
 :deodexrom
 cls
@@ -153,12 +268,12 @@ echo Starting deodexing process for applications
 echo.
 echo.
 echo.
-FOR %%F IN ("WORKING\system\app\*.apk") DO call "tools/scripts/deodexapk.bat" %%F %api% %compression%
+FOR %%F IN ("WORKING\system\app\*.apk") DO call "tools/scripts/deodexapk.bat" %%F %api% %compression% %heapsize%
 echo.
 echo.
 echo.
 echo Starting deodexing process for priv-app applications
-FOR %%F IN ("WORKING\system\app\*.apk") DO call "tools/scripts/deodexprivapp.bat" %%F %api% %compression%
+FOR %%F IN ("WORKING\system\priv-app\*.apk") DO call "tools/scripts/deodexprivapp.bat" %%F %api% %compression% %heapsize%
 echo.
 echo.
 echo.
@@ -166,10 +281,9 @@ echo Starting deodexing process for framework
 echo.
 echo.
 echo.
-FOR %%F IN ("WORKING\system\framework\*.jar") DO call "tools/scripts/deodexjar.bat" %%F %api% %compression%
-FOR %%F IN ("WORKING\system\framework\*.apk") DO call "tools/scripts/deodexjar.bat" %%F %api% %compression%
-FOR %%F IN ("WORKING\system\framework\processed\*.jar") DO call "tools/scripts/movejar.bat" %%F
-FOR %%F IN ("WORKING\system\framework\processed\*.apk") DO call "tools/scripts/movejar.bat" %%F
+FOR %%F IN ("WORKING\system\framework\*.jar") DO call "tools/scripts/deodexjar.bat" %%F %api% %compression% %heapsize%
+FOR %%F IN ("WORKING\system\framework\*.apk") DO call "tools/scripts/deodexjar.bat" %%F %api% %compression% %heapsize%
+call tools/scripts/done
 goto main
 
 :donate
@@ -189,19 +303,17 @@ echo ***************************************************************************
 echo.
 "tools/cecho"   {0A}1{#} - Zipalign
 echo.
-"tools/cecho"   {0A}2{#} - De-knox rom(samsung)
+"tools/cecho"   {0A}2{#} - Change density   
 echo.
-"tools/cecho"   {0A}3{#} - Change density
+"tools/cecho"   {0A}3{#} - Toggle bitcode verification                                        (%bitcodetoggle%)
 echo.
-"tools/cecho"   {0A}4{#} - Toggle bitcode verification
+"tools/cecho"   {0A}4{#} - Toggle GPU rendering                                               (%gpurenderingtoggle%)
 echo.
-"tools/cecho"   {0A}5{#} - Toggle GPU rendering
+"tools/cecho"   {0A}5{#} - Toggle bootanimation                                               (%bootanimationtoggle%)
 echo.
 "tools/cecho"   {0A}6{#} - Add sysrw/ro binary
 echo.
-"tools/cecho"   {0A}7{#} - Toggle bootanimation
-echo.
-"tools/cecho"   {0A}8{#} - Kernel/Recovery tools
+"tools/cecho"   {0A}7{#} - Kernel/Recovery tools
 echo.
 "tools/cecho"   {0A}0{#} - Back
 echo.
@@ -210,13 +322,12 @@ echo ***************************************************************************
 echo.
 SET /P menunr=Please make your decision: 
 IF %menunr% == 1 goto zipalign
-IF %menunr% == 2 goto deknox
-IF %menunr% == 3 goto densitychanger
-IF %menunr% == 4 goto togglebitcode
-IF %menunr% == 5 goto togglegpurendering
+IF %menunr% == 2 goto densitychanger
+IF %menunr% == 3 goto togglebitcode
+IF %menunr% == 4 goto togglegpurendering
+IF %menunr% == 5 goto togglebootanimation
 IF %menunr% == 6 goto addsysrwo
-IF %menunr% == 7 goto togglebootanimation
-IF %menunr% == 8 goto imagetools
+IF %menunr% == 7 goto imagetools
 IF %menunr% == 0 goto main
 "tools/cecho" {0C}OOOPS, looks like you typed something wrong..{#}
 echo.
@@ -233,7 +344,7 @@ echo  original setting! changing makes your device seem bigger or smaller accord
 echo  to the value you change it to. however some apps may appear distorted.
 echo  lower = device feels bigger                     higher = device feels smaller
 echo.
-"tools/cecho"    {0A}1{#} - Change DPI
+"tools/cecho"    {0A}1{#} - Change density                          Current:%density%
 echo.
 "tools/cecho"    {0A}2{#} - Revert changes to stock
 echo.
@@ -292,217 +403,49 @@ call tools/scripts/done
 goto densitychanger
 
 :togglebitcode
-cls
-echo.
-echo ********************************************************************************
-echo.
-echo  Turns bitcode verification on/off, i suggest you keep it on but trning it off
-echo  increases speed greatly, however could(not likely) cause an app or 2 to crash.
-echo  default is off.
-echo.
-"tools/cecho"    {0A}1{#} - Turn off
-echo.
-"tools/cecho"    {0A}2{#} - Turn on
-echo.
-"tools/cecho"    {0A}0{#} - Go back
-echo.
-echo.
-echo ********************************************************************************
-echo.
-set selection=RICKY310711
-set /P selection=Make your decision:
-IF %selection% == 1 goto disablebitcode
-IF %selection% == 2 goto enablebitcode
-IF %selection% == 0 goto extrasmenu
-goto togglebitcode
-
-:disablebitcode
-if exist "tools/config/romsettings/bitcodeverification/BitcodeToken" (
-"tools/cecho" {0C}Bitcode verification is already disabled{#}
-echo.
-pause
+findstr "Disable Bitcode-verification" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+"tools/fart" "WORKING\system\build.prop" "# Disable Bitcode-verification" "##TMP"
+"tools/fart" "WORKING\system\build.prop" "dalvik.vm.verify-bytecode = false" "##TMP"
+"tools/fart" "WORKING\system\build.prop" "dalvik.vm.dexopt-flags=v=n,o=v" "##TMP"
+cscript "tools/sed.vbs" "WORKING\system\build.prop" "##TMP" "">nul
 )
-if not exist "tools/config/romsettings/bitcodeverification/BitcodeToken" (
+if not exist tmp.txt (
 echo # Disable Bitcode-verification >> WORKING/system/build.prop
 echo dalvik.vm.verify-bytecode = false >> WORKING/system/build.prop
 echo dalvik.vm.dexopt-flags=v=n,o=v >> WORKING/system/build.prop
-echo AUTOGENERATED > tools/config/romsettings/bitcodeverification/BitcodeToken
+)
+del tmp.txt
 call tools/scripts/done
-)
-goto togglebitcode
-
-:enablebitcode
-if not exist "tools/config/romsettings/bitcodeverification/BitcodeToken" (
-"tools/cecho" {0C}Bitcode verification is not disabled yet{#}
-echo.
-pause
-)
-if exist "tools/config/romsettings/bitcodeverification/BitcodeToken" (
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "# Disable Bitcode-verification" ""
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "dalvik.vm.verify-bytecode = false" ""
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "dalvik.vm.dexopt-flags=v=n,o=v" ""
-del tools\config\romsettings\bitcodeverification\BitcodeToken
-call tools/scripts/done
-)
-goto togglebitcode
+goto extrasmenu
 
 :togglebootanimation
-cls
-echo.
-echo ********************************************************************************
-echo.
-echo  This option allows you to enable/disable the bootanimation. if disabled, the
-echo  screen will stay black until the device is completely booted
-echo  defauls is on.
-echo.
-"tools/cecho"    {0A}1{#} - Turn off
-echo.
-"tools/cecho"    {0A}2{#} - Turn on
-echo.
-"tools/cecho"    {0A}0{#} - Go back
-echo.
-echo.
-echo ********************************************************************************
-echo.
-set selection=RICKY310711
-set /P selection=Make your decision:
-IF %selection% == 1 goto disablebootanimation
-IF %selection% == 2 goto enablebootanimation
-IF %selection% == 0 goto extrasmenu
-goto togglebootanimation
-
-:disablebootanimation
-if exist "tools/config/romsettings/bootanimation/AnimationToken" (
-"tools/cecho" {0C}Bootanimation is already disabled{#}
-echo.
-pause
+findstr "Disable Bootanimation" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+"tools/fart" "WORKING\system\build.prop" "# Disable Bootanimation" "##TMP"
+"tools/fart" "WORKING\system\build.prop" "debug.sf.nobootanimation=1" "##TMP"
+cscript "tools/sed.vbs" "WORKING\system\build.prop" "##TMP" "">nul
 )
-if not exist "tools/config/romsettings/bootanimation/AnimationToken" (
+if not exist tmp.txt (
 echo # Disable Bootanimation >> WORKING/system/build.prop
 echo debug.sf.nobootanimation=1 >> WORKING/system/build.prop
-echo AUTOGENERATED > tools/config/romsettings/bootanimation/AnimationToken
+)
+del tmp.txt
 call tools/scripts/done
-)
-goto togglebootanimation
-
-:enablebootanimation
-if not exist "tools/config/romsettings/bootanimation/AnimationToken" (
-"tools/cecho" {0C}Bootanimation is not disabled yet{#}
-echo.
-pause
-)
-if exist "tools/config/romsettings/bootanimation/AnimationToken" (
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "# Disable Bootanimation" ""
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "debug.sf.nobootanimation=1" ""
-del tools\config\romsettings\bootanimation\AnimationToken
-call tools/scripts/done
-)
-goto togglebootanimation
+goto extrasmenu
 
 :togglegpurendering
-cls
-echo.
-echo ********************************************************************************
-echo.
-echo  This option allows you to enable/disable GPU rendering
-echo.
-"tools/cecho"    {0A}1{#} - Turn off
-echo.
-"tools/cecho"    {0A}2{#} - Turn on
-echo.
-"tools/cecho"    {0A}0{#} - Go back
-echo.
-echo.
-echo ********************************************************************************
-echo.
-set selection=RICKY310711
-set /P selection=Make your decision:
-IF %selection% == 1 goto disablegpurendering
-IF %selection% == 2 goto enablegpurendering
-IF %selection% == 0 goto extrasmenu
-goto togglegpurendering
-
-:disablegpurendering
-if exist "tools/config/romsettings/gpurendering/GPUToken" (
-"tools/cecho" {0C}GPU rendering is already disabled{#}
-echo.
-pause
+findstr "debug.sf.hw=1" "WORKING\system\build.prop" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+"tools/fart" "WORKING\system\build.prop" "# Disable GPU Rendering" "##TMP"
+"tools/fart" "WORKING\system\build.prop" "debug.sf.hw=1" "##TMP"
+cscript "tools/sed.vbs" "WORKING\system\build.prop" "##TMP" "">nul
 )
-if not exist "tools/config/romsettings/gpurendering/GPUToken" (
+if not exist tmp.txt (
 echo # Disable GPU Rendering >> WORKING/system/build.prop
 echo debug.sf.hw=1 >> WORKING/system/build.prop
-echo AUTOGENERATED > tools/config/romsettings/gpurendering/GPUToken
-call tools/scripts/done
 )
-goto togglegpurendering
-
-:enablegpurendering
-if not exist "tools/config/romsettings/gpurendering/GPUToken" (
-"tools/cecho" {0C}GPU rendering is not disabled yet{#}
-echo.
-pause
-)
-if exist "tools/config/romsettings/gpurendering/GPUToken" (
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "# Disable GPU Rendering" ""
-cscript "tools/sed.vbs" "WORKING/system/build.prop" "debug.sf.hw=1" ""
-del tools\config\romsettings\gpurendering\GPUToken
-call tools/scripts/done
-)
-goto togglegpurendering
-
-:deknox
-cls
-echo.
-echo ********************************************************************************
-echo.
-echo  Samsungs never devices/firmware have this crappy implementation on what they 
-echo  call "secure". they try doing this via knox to catch out the people who wreck
-echo  their device via gaining root. however the trigger can be avoided by removing
-echo  knox libs/utillities. SO FUCK YOU SAMSUNG!
-echo.
-"tools/cecho"    {0A}1{#} - De-knox the rom
-echo.
-"tools/cecho"    {0A}0{#} - Go back
-echo.
-echo.
-echo ********************************************************************************
-echo.
-set selection=RICKY310711
-set /P selection=Make your decision:
-IF %selection% == 1 goto startdeknoxing
-IF %selection% == 0 goto main
-goto deknox
-
-:startdeknoxing
-IF %knox% == No (
-"tools/cecho" {0C}THE ROM IS ALREADY KNOX-FREE{#}
-echo.
-"tools/cecho" {0C}NO NEED TO REPEAT{#}
-echo.
-pause
-goto extrasmenu
-)
-if exist WORKING/system/app/KNOXAgent.apk del WORKING\system\app\KNOXAgent.apk
-if exist WORKING/system/app/KNOXAgent.odex del WORKING\system\app\KNOXAgent.odex
-if exist WORKING/system/app/KLMSAgent.apk del WORKING\system\app\KLMSAgent.apk
-if exist WORKING/system/app/KLMSAgent.odex del WORKING\system\app\KLMSAgent.odex
-if exist WORKING/system/app/KnoxAttestationAgent.apk del WORKING\system\app\KnoxAttestationAgent.apk
-if exist WORKING/system/app/KnoxAttestationAgent.odex del WORKING\system\app\KnoxAttestationAgent.odex
-if exist WORKING/system/app/KNOXStore.apk del WORKING\system\app\KNOXStore.apk
-if exist WORKING/system/app/KNOXStore.odex del WORKING\system\app\KNOXStore.odex
-if exist WORKING/system/app/ContainerAgent.apk del WORKING\system\app\ContainerAgent.apk
-if exist WORKING/system/app/ContainerAgent.odex del WORKING\system\app\ContainerAgent.odex
-if exist WORKING/system/app/ContainerEventsRelayManager.apk del WORKING\system\app\ContainerEventsRelayManager.apk
-if exist WORKING/system/app/ContainerEventsRelayManager.odex del WORKING\system\app\ContainerEventsRelayManager.odex
-if exist WORKING/system/app/KNOXStub.apk del WORKING\system\app\KNOXStub.apk
-if exist WORKING/system/app/KNOXStub.odex del WORKING\system\app\KNOXStub.odex
-if exist WORKING/system/priv-app/KLMSAgent.apk del WORKING\system\priv-app\KLMSAgent.apk
-if exist WORKING/system/priv-app/KLMSAgent.odex del WORKING\system\priv-app\KLMSAgent.odex
-if exist WORKING/system/etc/secure_storage/com.sec.knox.store rmdir /s /q WORKING\system\etc\secure_storage\com.sec.knox.store
-if exist WORKING/system/lib/libknoxdrawglfunction.so del WORKING\system\lib\libknoxdrawglfunction.so
-if exist WORKING/system/containers rmdir /s /q WORKING\system\containers
-if exist WORKING/system/preloadedkiosk rmdir /s /q WORKING\system\preloadedkiosk
-if exist WORKING/system/preloadedsso rmdir /s /q WORKING\system\preloadedsso
+del tmp.txt
 call tools/scripts/done
 goto extrasmenu
 
@@ -529,7 +472,7 @@ echo ZipAligning %%F
 if not exist "WORKING/system/app/%%F.zip" (
 "tools/cecho" {0C}FAILED{#}
 echo.
-echo %%F >> failed.txt
+echo WORKING/system/app/%%F >> failed.txt
 pause
 )
 if exist "WORKING/system/app/%%F.zip" (
@@ -540,24 +483,22 @@ echo.
 )
 echo.
 )
-if exist WORKING/system/priv-app (
-FOR %%F IN ("WORKING/system/app/*.apk") DO (
+FOR %%F IN ("WORKING/system/priv-app/*.apk") DO (
 echo ZipAligning %%F
-"tools/zipalign" -v 4 "WORKING\system\app\%%F" "WORKING/system/app/%%F.zip" >nul
-if not exist "WORKING/system/app/%%F.zip" (
+"tools/zipalign" -v 4 "WORKING\system\priv-app\%%F" "WORKING/system/priv-app/%%F.zip" >nul
+if not exist "WORKING/system/priv-app/%%F.zip" (
 "tools/cecho" {0C}FAILED{#}
 echo.
-echo %%F >> failed.txt
+echo WORKING/system/priv-app/%%F >> failed.txt
 pause
 )
-if exist "WORKING/system/app/%%F.zip" (
-del "WORKING\system\app\%%F" >nul
-ren "WORKING\system\app\%%F.zip" "%%F"
+if exist "WORKING/system/priv-app/%%F.zip" (
+del "WORKING\system\priv-app\%%F" >nul
+ren "WORKING\system\priv-app\%%F.zip" "%%F"
 "tools/cecho" {0A}SUCCESS{#}
 echo.
 )
 echo.
-)
 )
 cls
 if not exist failed.txt call tools/scripts/done
@@ -568,6 +509,7 @@ type failed.txt
 pause
 del failed.txt
 )
+call tools/scripts/done
 goto extrasmenu
 
 :imagetools
@@ -583,9 +525,9 @@ echo ***************************************************************************
 echo.
 "tools/cecho"   {0A}1{#} - Unpack file in working directory
 echo.
-"tools/cecho"   {0A}2{#} - Compile image folder working directory
+"tools/cecho"   {0A}2{#} - Compile image folder from working directory
 echo.
-"tools/cecho"   {0A}3{#} - Enable adbd insecure ramdisk
+"tools/cecho"   {0A}3{#} - Make ramdisk insecure(VERY EXPERIMENTAL AND NOT RECOMMENDED)
 echo.
 "tools/cecho"   {0A}0{#} - Back
 echo.
@@ -754,6 +696,7 @@ goto initdtweaks
 
 :settings
 cls
+call tools/scripts/refreshsettings
 call tools/scripts/refresh
 call tools/scripts/checkdevice
 cls
@@ -769,11 +712,15 @@ echo.
 echo.
 "tools/cecho"   {0A}3{#} - Change default permission syntax                  current:%syntax%      
 echo.
-"tools/cecho"   {0A}4{#} - Delete all project data
+"tools/cecho"   {0A}4{#} - Change root mode                                  current:%rootmode%      
 echo.
-"tools/cecho"   {0A}5{#} - Revert all settings
+"tools/cecho"   {0A}5{#} - Change default image format(unpacking)            current:%imageformat%      
 echo.
-"tools/cecho"   {0A}6{#} - Delete all data for fresh use
+"tools/cecho"   {0A}6{#} - Delete all project data
+echo.
+"tools/cecho"   {0A}7{#} - Revert all settings
+echo.
+"tools/cecho"   {0A}8{#} - Delete all data for fresh use
 echo.
 "tools/cecho"   {0A}0{#} - Go back
 echo.
@@ -784,10 +731,47 @@ set /P selection=Make your decision:
 if %selection% == 1 goto changecompression
 if %selection% == 2 goto changeheap
 if %selection% == 3 goto changesyntax
-if %selection% == 4 goto deleteproject
-if %selection% == 5 goto revertsettings
-if %selection% == 6 goto freshtool
+if %selection% == 4 goto changerootmode
+if %selection% == 5 goto changeimageformat
+if %selection% == 6 goto deleteproject
+if %selection% == 7 goto revertsettings
+if %selection% == 8 goto freshtool
 if %selection% == 0 goto main
+goto settings
+
+:changerootmode
+cls
+echo.
+echo ********************************************************************************
+echo   Choose your desired root mode, insecure will grant everything SU access while
+echo   secure will make the normal dialog appear when something request root.
+echo.
+"tools/cecho"   {0A}1{#} - secure
+echo.
+"tools/cecho"   {0A}2{#} - insecure
+echo.
+echo.
+echo ********************************************************************************
+echo.
+SET /P menunr=Please make your decision: 
+IF %menunr% == 1 goto changetosecure
+IF %menunr% == 2 goto changetoinsecure
+"tools/cecho" {0C}OOOPS, looks like you typed something wrong..{#}
+echo.
+pause>nul
+goto changesyntax
+
+:changetosecure
+set compression=secure
+call tools/scripts/applysettings
+call tools/scripts/done
+goto settings
+
+:changetoinsecure
+set compression=insecure
+call tools/scripts/applysettings
+call tools/scripts/done
+goto settings
 
 :changesyntax
 cls
@@ -812,16 +796,49 @@ pause>nul
 goto changesyntax
 
 :changetometadata
-rmdir /s /q "tools/config/toolsettings/syntax"
-mkdir "tools/config/toolsettings/syntax"
-echo AUTOGENERATED > tools/config/toolsettings/syntax/metadata
+set syntax=metadata
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
 :changetosetperm
-rmdir /s /q "tools/config/toolsettings/syntax"
-mkdir "tools/config/toolsettings/syntax"
-echo AUTOGENERATED > tools/config/toolsettings/syntax/perm
+set syntax=perm
+call tools/scripts/applysettings
+call tools/scripts/done
+goto settings
+
+:changeimageformat
+cls
+echo.
+echo ********************************************************************************
+echo   Choose the default image format of .img files.
+echo   If img files cannot be read change this option and you may then be able to
+echo   to unpack them correctly.
+echo.
+"tools/cecho"   {0A}1{#} - ext4 image format
+echo.
+"tools/cecho"   {0A}2{#} - sparse image format
+echo.
+echo.
+echo ********************************************************************************
+echo.
+SET /P menunr=Please make your decision: 
+IF %menunr% == 1 goto changetoext4
+IF %menunr% == 2 goto changetosparse
+"tools/cecho" {0C}OOOPS, looks like you typed something wrong..{#}
+echo.
+pause>nul
+goto changeimageformat
+
+:changetoext4
+set imageformat=ext4
+call tools/scripts/applysettings
+call tools/scripts/done
+goto settings
+
+:changetosparse
+set imageformat=sparse
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
@@ -835,9 +852,8 @@ echo        note: this will be saved and set by default when running the tool
 echo.
 echo ********************************************************************************
 set /P tmp=Make your decision:
-rmdir /s /q "tools/config/toolsettings/compression"
-mkdir "tools/config/toolsettings/compression"
-echo AUTOGENERATED > tools/config/toolsettings/compression/%tmp%
+set compression=%tmp%
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
@@ -850,9 +866,8 @@ echo        note: this will be saved and set by default when running the tool
 echo.
 echo ********************************************************************************
 set /P tmp=Make your decision:
-rmdir /s /q "tools/config/toolsettings/heapsize"
-mkdir "tools/config/toolsettings/heapsize"
-echo AUTOGENERATED > tools/config/toolsettings/heapsize/%tmp%
+set heapsize=%tmp%
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
@@ -892,7 +907,8 @@ set selection=RICKY310711
 set /P selection=Make your decision:
 IF %selection% == 0 goto main
 echo Deleting old settings
-call tools/scripts/revertsettings>nul
+call tools/scripts/revertsettings
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
@@ -913,12 +929,20 @@ set /P selection=Make your decision:
 IF %selection% == 0 goto main
 echo Deleting old data
 call tools/scripts/deleteproject>nul
+call tools/scripts/rebuild>nul
 echo Deleting old settings
 call tools/scripts/revertsettings>nul
+call tools/scripts/applysettings
 call tools/scripts/done
 goto settings
 
 :setworking
+set /A count=0
+FOR %%F IN (tools/config/romsettings/romname/*) DO (
+set tmpdata=%%~nF%%~xF
+set /A count+=1
+)
+if %count%==0 goto setrom
 cls
 echo.
 echo ********************************************************************************
@@ -936,6 +960,8 @@ IF %selection% == 0 goto main
 echo Deleting old data
 call tools/scripts/deleteproject>nul
 call tools/scripts/rebuild>nul
+
+:setrom
 set romname=
 cls
 echo.
@@ -985,18 +1011,76 @@ echo ***************************************************************************
 mkdir "WORKING/tmp"
 echo extracting tar.md5 file..
 "tools/7za" x "ORIGINAL\*" -o"WORKING\tmp" "*.md5">nul
+"tools/7za" x "ORIGINAL\*" -o"WORKING\tmp" "*.tar">nul
+if not exist WORKING/tmp/*.md5 (
+"tools/7za" x "ORIGINAL\*" -o"WORKING/tmp" "*.md5">nul
+)
+if not exist WORKING/tmp/*.tar (
+"tools/7za" x "ORIGINAL\*" -o"WORKING/tmp" "*.tar">nul
+)
 echo making md5 file zip compatible..
+ping -n 5 -w 500 127.0.0.1>nul
 ren WORKING\tmp\*.md5 tmp.zip
-echo extracting system..
-"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" "system.img">nul
+if not exist WORKING/tmp/tmp.zip ren WORKING\tmp\*.tar tmp.zip
+if not exist WORKING/tmp/tmp.zip "tools/cecho" {0D} FAILED TO UNPACK. TRY AGAIN {#}
+if not exist WORKING/tmp/tmp.zip echo.
+if not exist WORKING/tmp/tmp.zip pause
+if not exist WORKING/tmp/tmp.zip goto main
+ping -n 2 -w 200 127.0.0.1 > nul
 echo extracting kernel..
 "tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING" "boot.img">nul
+if not exist WORKING/boot.img (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING/" "boot.img">nul
+)
+if not exist WORKING/boot.img (
+"tools/cecho" {0D} FAILED TO UNPACK KERNEL. {#}
+echo.
+pause
+goto main
+)
+ping -n 2 -w 200 127.0.0.1 > nul
+echo extracting system..
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.img>nul
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.img.ext4>nul
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.ext4.img>nul
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.ext.img>nul
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.img.ext>nul
+if not exist WORKING/tmp/system.img (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING/tmp/" system.img>nul
+)
+if not exist WORKING/tmp/system.img.ext4 (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.img.ext4>nul
+)
+if not exist WORKING/tmp/system.ext4.img (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.ext4.img>nul
+)
+if not exist WORKING/tmp/system.ext.img (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.ext.img>nul
+)
+if not exist WORKING/tmp/system.img.ext (
+"tools/7za" x "WORKING\tmp\tmp.zip" -o"WORKING\tmp" system.img.ext>nul
+)
+if not exist WORKING/tmp/system.img (
+if not exist WORKING/tmp/system.img.ext4 (
+if not exist WORKING/tmp/system.ext4.img (
+if not exist WORKING/tmp/system.ext.img (
+if not exist WORKING/tmp/system.img.ext (
+"tools/cecho" {0D} FAILED TO UNPACK KERNEL. {#}
+echo.
+pause
+goto main
+)
+)
+)
+)
+)
 goto startfromimage
 
 :startfromimage
 cls
 echo.
 echo ********************************************************************************
+if %imageformat% == ext4 (
 "tools/cecho" {0A}  DUE TO THE FILESYSTEMS BEING UNABLE TO BE READ BY WINDOWS ITS REQUIRES SOME{#}
 echo.
 "tools/cecho" {0A}  HELP UNPACKING, YOU MAY NEED TO WAIT ABIT FOR EXT4UNPACKER BUT WHEN IT DOES{#}
@@ -1009,16 +1093,60 @@ echo.
 "tools/cecho" {0A}  FOLDER AND PRESS ENTER WHEN EXTRACTION COMPLETES{#}
 echo.
 echo   %current%/WORKING/system
+"tools/cecho" {0C}  IF THIS OPTION DOESNT WORK, CHANGE THE IMAGE FORMAT TO SPARSE IN SETTINGS.{#}
+echo.
+"tools/cecho" {0C}  AND TRY UNPACKING AGAIN.{#}
+echo.
+)
+if %imageformat% == sparse (
+"tools/cecho" {0A}  DUE TO THE FILESYSTEMS BEING UNABLE TO BE READ BY WINDOWS ITS REQUIRES SOME{#}
+echo.
+"tools/cecho" {0A}  HELP UNPACKING. CONVERTIONG THE SPARSE IMAGE TO NORMAL IMAGE.{#}
+echo.
+"tools/cecho" {0A}  YOU MAY NEED TO WAIT ABIT UPTO 20mins MAX FOR EXT2EXPLORE BUT WHEN IT DOES{#}
+echo.
+"tools/cecho" {0A}  APPEAR OPEN THE FOLLOWING FILE WITH IT{#}
+echo.
+echo   %current%/WORKING/tmp/system.*.out
+"tools/cecho" {0A}  AND SELECT ALL THE FILES AND FOLDERS EXTRACT TO THE FOLLOWING{#}
+echo.
+"tools/cecho" {0A}  FOLDER AND PRESS ENTER WHEN EXTRACTION COMPLETES{#}
+echo.
+echo   %current%/WORKING/system
+"tools/cecho" {0C}  IF THIS OPTION DOESNT WORK, CHANGE THE IMAGE FORMAT TO EXT4 IN SETTINGS.{#}
+echo.
+"tools/cecho" {0C}  AND TRY UNPACKING AGAIN.{#}
+echo.
+)
 echo ********************************************************************************
 if not exist WORKING/tmp mkdir "WORKING/tmp"
 IF %selection% == 4 echo extracting tar.md5 file..
 IF %selection% == 4 echo making md5 file zip compatible..
-if exist ORIGINAL/system.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img*">nul
-echo extracting system..
-if exist ORIGINAL/boot.img xcopy "ORIGINAL/boot.img" "WORKING/tmp/boot.img*">nul
 echo extracting kernel..
+if exist ORIGINAL/boot.img xcopy "ORIGINAL/boot.img" "WORKING/boot.img*">nul
+if not exist WORKING/boot.img xcopy "ORIGINAL\boot.img" "WORKING/boot.img*">nul
+if not exist WORKING/tmp mkdir WORKING/tmp
+echo extracting system..
+if exist ORIGINAL/system.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img*">nul
+if exist ORIGINAL/system.img.ext xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img.ext*">nul
+if exist ORIGINAL/system.ext.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.ext.img*">nul
+if exist ORIGINAL/system.ext4.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.ext4.img*">nul
+if exist ORIGINAL/system.img.ext4 xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img.ext4*">nul
 mkdir "WORKING\system"
+if %imageformat% == ext4 (
 "tools/ext4_unpacker.exe"
+)
+if %imageformat% == sparse (
+echo converting sparse image..
+if exist WORKING/tmp/system.img "tools/simg2img" WORKING/tmp/system.img WORKING/tmp/system.img.out
+if exist WORKING/tmp/system.img.ext "tools/simg2img" WORKING/tmp/system.img.ext WORKING/tmp/system.img.ext.out
+if exist WORKING/tmp/system.ext.img "tools/simg2img" WORKING/tmp/system.ext.img WORKING/tmp/system.ext.img.out
+if exist WORKING/tmp/system.ext4.img "tools/simg2img" WORKING/tmp/system.ext4.img WORKING/tmp/system.ext4.img.out
+if exist WORKING/tmp/system.img.ext4 "tools/simg2img" WORKING/tmp/system.img.ext4 WORKING/tmp/system.img.ext4.out
+cd tools
+"ext2explore"
+cd ..
+)
 pause>nul
 rmdir /s /q "WORKING/tmp"
 goto buildscript
@@ -1201,6 +1329,18 @@ pause
 goto aromaoptions
 
 :addaroma
+if %syntax% == metadata (
+"tools/cecho" {0C}ERROR: aroma is incompatible with metadata syntax{#}
+echo.
+"tools/cecho" {0C}change this from settings and rebuild installation{#}
+echo.
+"tools/cecho" {0C}scripts then try this again.{#}
+echo.
+pause
+goto aromaoptions
+)
+if exist WORKING/META-INF/com/google/android/aroma-config pause
+if exist WORKING/META-INF/com/google/android/aroma-config goto aromaoptions
 if exist WORKING/META-INF/com/google/android/aroma-config "tools/cecho" {0C}ERROR: aroma is already installed.{#}
 if exist WORKING/META-INF/com/google/android/aroma-config echo.
 if exist WORKING/META-INF/com/google/android/aroma-config "tools/cecho" {0C}reconfigure it.{#}
@@ -1416,7 +1556,7 @@ echo ***************************************************************************
 echo.
 set /P selection=Make your decision:
 IF %selection% == 0 goto main
-ren WORKING\system\bin\debuggerd debuggerd.orig>nul
+ren WORKING\system\bin\debuggerd debuggerd.real>nul
 rmdir /s /q "WORKING/system/etc/init.d">nul
 xcopy "tools\files\initd" "WORKING" /e /i /h>nul
 call tools/scripts/done
@@ -1474,11 +1614,12 @@ echo ***************************************************************************
 echo.
 echo  With root lets cut to the chase, root gives your device the abillity to mount
 echo  any part of the device enabling you to make system modifications.
+echo  To change the root method go to settings and choose secure or insecure.
+echo  There is more detail there about insecure/secure root methods.
 echo.
-"tools/cecho"  {0A}MAKE SURE YOU HAVE INIT.D BEFORE YOU CONTINUE.{#}
 echo.
 echo.
-"tools/cecho"    {0A}1{#} - Root the rom
+"tools/cecho"    {0A}1{#} - Root the rom (%rootmode% method)
 echo.
 "tools/cecho"    {0A}0{#} - Go back
 echo.
@@ -1492,28 +1633,43 @@ IF %selection% == 0 goto main
 goto rootrom
 
 :startrootprocess
-if not exist "tools/config/romsettings/installationfiles/InstallationToken" ("tools/cecho"    {0A}This doesnt contain the tools extraction files{#}
+if not exist tools/config/romsettings/installationfiles/InstallationToken (
+"tools/cecho"    {0A}This doesnt contain the tools extraction files{#}
 echo.
-"tools/cecho"    {0A}select "Add rom extraction" from extraction options to fix this{#}
+"tools/cecho"    {0A}select option 4 in the main menu "extraction options" and{#}
 echo.
-pause
-goto main
-)
-if exist "tools/config/romsettings/root/RootToken" ("tools/cecho"    {0A}This rom is already rooted, no need to repeat this{#}
+"tools/cecho"    {0A}select "Rebuild META-INF updater-script" to fix this{#}
 echo.
 pause
 goto main
 )
-del "WORKING\system\app\Superuser.apk"
-del "WORKING\system\etc\.installed_su_daemon"
-del "WORKING\system\etc\install-recovery.sh"
-del "WORKING\system\etc\init.d\99SuperSUDaemon"
+del "WORKING\system\bin\su"
 del "WORKING\system\xbin\su"
 del "WORKING\system\xbin\daemonsu"
 rmdir /s /q "WORKING/system/bin/.ext"
+del "WORKING\system\etc\install-recovery.sh"
+del "WORKING\system\etc\init.d\99SuperSUDaemon"
+del "WORKING\system\etc\.installed_su_daemon"
+del "WORKING\system\app\Superuser.apk"
+del  "WORKING\system\app\Superuser.odex"
+del "WORKING\system\app\SuperUser.apk"
+del "WORKING\system\app\SuperUser.odex"
+del "WORKING\system\app\superuser.apk"
+del "WORKING\system\app\superuser.odex"
+del "WORKING\system\app\Supersu.apk"
+del "WORKING\system\app\Supersu.odex"
+del "WORKING\system\app\SuperSU.apk"
+del "WORKING\system\app\SuperSU.odex"
+del "WORKING\system\app\SuperSu.apk"
+del "WORKING\system\app\SuperSu.odex"
+del "WORKING\system\app\supersu.apk"
+del "WORKING\system\app\supersu.odex"
 xcopy "tools\files\root\all" "WORKING" /e /i /h
 xcopy "tools\files\root\%architecture%" "WORKING" /e /i /h
-echo AUTOGENERATED >> tools/config/romsettings/root/RootToken
+if %rootmode% == insecure (
+echo adding insecure root mode
+del "WORKING\system\app\Superuser.apk"
+)
 cscript "tools/sed.vbs" "WORKING/META-INF/com/google/android/updater-script" "##ROOTLINE##" ""
 call tools/scripts/done
 goto main
@@ -1529,7 +1685,7 @@ echo ***************************************************************************
 echo.
 echo ********************************************************************************
 echo.
-"tools/cecho"   {0A}1{#} - Remove old installation files and rebuild scripts
+"tools/cecho"   {0A}1{#} - Rebuild META-INF(updater-script)
 echo.
 "tools/cecho"   {0A}2{#} - Add /data extraction
 echo.
@@ -1623,11 +1779,11 @@ echo.
 echo  This changes what partitions to wipe on the device. by default system is
 echo  alread active
 echo.
-if exist "tools/config/romsettings/wipes/WipedataToken" "tools/cecho"    {0A}1{#} - Data will be wiped
-if not exist "tools/config/romsettings/wipes/WipedataToken" "tools/cecho"    {0A}1{#} - Wipe data on installation
+if exist "tools/config/romsettings/wipes/WipedataToken" "tools/cecho"    {0A}1{#} - Toggle data wipe                                                (x)
+if not exist "tools/config/romsettings/wipes/WipedataToken" "tools/cecho"    {0A}1{#} - Toggle data wipe                                                ( )
 echo.
-if exist "tools/config/romsettings/wipes/WipecacheToken" "tools/cecho"    {0A}2{#} - Cache will be wiped
-if not exist "tools/config/romsettings/wipes/WipecacheToken" "tools/cecho"    {0A}2{#} - Wipe cache on installation
+if exist "tools/config/romsettings/wipes/WipecacheToken" "tools/cecho"    {0A}2{#} - Toggle cache wipe                                               (x)
+if not exist "tools/config/romsettings/wipes/WipecacheToken" "tools/cecho"    {0A}2{#} - Toggle cache wipe                                               ( )
 echo.
 "tools/cecho"    {0A}0{#} - Go back
 echo.
@@ -1648,13 +1804,29 @@ echo.
 pause
 goto extractionoptions
 )
-if exist "tools/config/romsettings/wipes/WipedataToken" ("tools/cecho"    {0A}Data is already gonna be wiped, no need to repeat this{#}
-echo.
-pause
-goto changewipes
-)
+
+if exist WORKING/META-INF/com/google/android/updater-script (
+findstr "##WIPELINE1##" "WORKING\META-INF\com\google\android\updater-script" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
 if %devicetype% == samsung xcopy "tools\files\safewipe" "WORKING" /e /i /h>nul
-if not exist "tools/config/romsettings/wipes/WipedataToken" echo AUTOGENERATED >> tools/config/romsettings/wipes/WipedataToken
+echo AUTOGENERATED >> tools/config/romsettings/wipes/WipedataToken
+)
+if not exist tmp.txt (
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "ui_print(\"Wiping Data" "##WIPELINE1##ui_print(\"Wiping Data"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "delete_recursive(\"/data" "##WIPELINE1##delete_recursive(\"/data"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "package_extract_file(\"tmp/safewipe.sh" "##WIPELINE1##package_extract_file(\"tmp/safewipe.sh"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "package_extract_file(\"tmp/bash" "##WIPELINE1##package_extract_file(\"tmp/bash"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_metadata(\"/tmp/safewipe.sh" "##WIPELINE1##set_metadata(\"/tmp/safewipe.sh"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_metadata(\"/tmp/bash" "##WIPELINE1##set_metadata(\"/tmp/bash"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_perm(0, 0, 0777, \"/tmp/safewipe.sh" "##WIPELINE1##set_perm(0, 0, 0777, \"/tmp/safewipe.sh"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "set_perm(0, 0, 0777, \"/tmp/bash" "##WIPELINE1##set_perm(0, 0, 0777, \"/tmp/bash"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "run_program(\"/tmp/safewipe.sh" "##WIPELINE1##run_program(\"/tmp/safewipe.sh"
+del "WORKING\tmp\safewipe.sh"
+del "WORKING\tmp\bash"
+del "tools\config\romsettings\wipes\WipedataToken"
+)
+del tmp.txt
+)
 call tools/scripts/done
 goto changewipes
 
@@ -1666,12 +1838,18 @@ echo.
 pause
 goto extractionoptions
 )
-if exist "tools/config/romsettings/wipes/WipecacheToken" ("tools/cecho"    {0A}Cache is already gonna be wiped, no need to repeat this{#}
-echo.
-pause
-goto changewipes
+if exist WORKING/META-INF/com/google/android/updater-script (
+findstr "##WIPELINE2##" "WORKING\META-INF\com\google\android\updater-script" >>tmp.txt || del tmp.txt
+if exist tmp.txt (
+echo AUTOGENERATED >> tools/config/romsettings/wipes/WipecacheToken
 )
-if not exist "tools/config/romsettings/wipes/WipecacheToken" echo AUTOGENERATED >> tools/config/romsettings/wipes/WipecacheToken
+if not exist tmp.txt (
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "ui_print(\"Wiping Cache" "##WIPELINE2##ui_print(\"Wiping Cache"
+"tools/fart" "WORKING\META-INF\com\google\android\updater-script" "delete_recursive(\"/cache" "##WIPELINE2##delete_recursive(\"/cache"
+del "tools\config\romsettings\wipes\WipecacheToken"
+)
+del tmp.txt
+)
 call tools/scripts/done
 goto changewipes
 
@@ -1765,15 +1943,11 @@ echo.
 echo.
 "tools/cecho"                       {0A}Insecure ramdisk{#} : %insecureramdisk%
 echo.
-"tools/cecho"                                   {0A}Knox{#} : %knox%
-echo.
 "tools/cecho"                     {0A}Installation files{#} : %installationconfig%
 echo.
 "tools/cecho"                 {0A}Data folder extraction{#} : %dataextraction%
 echo.
 "tools/cecho"                         {0A}App autobackup{#} : %autobackup%
-echo.
-"tools/cecho"                       {0A}Modified density{#} : %densityconfig%
 echo.
 "tools/cecho"                          {0A}GPU rendering{#} : %gpurendering%
 echo.
@@ -1806,6 +1980,7 @@ echo.
 echo ********************************************************************************
 echo.
 echo  This option will build the rom from the WORKING folder
+echo  NOTE: the.zip file is pre-signed avoiding long waits and bugs, enjoy!
 echo.
 "tools/cecho"    {0A}1{#} - Build rom from working folder
 echo.
@@ -1831,24 +2006,11 @@ if exist WORKING/META-INF/MANIFEST.MF del /Q "WORKING\META-INF\MANIFEST.MF">nul
 del /Q "ROMBUILD\%delfile%">nul
 set tmpdata=
 set delfile=
+xcopy "tools\files\presigned" "ROMBUILD" /e /i /h>nul
 cd WORKING
-call "../tools/7za.exe" a -mx9 -tzip "../ROMBUILD/tmp" * >nul
+call "../tools/7za.exe" u -mx%compression% -tzip "../ROMBUILD/tmp.zip" * 
 cd ..
-echo.
-cls
-echo.
-echo ********************************************************************************
-echo.
-echo                               Sign rom aswell?
-echo                                     y/n
-echo.
-echo ********************************************************************************
-set /P selection=Make your decision:
-IF %selection% == n ren "ROMBUILD\tmp.zip" "unsigned_%romname%.zip"
-IF %selection% == n goto main
-java -Xmx%heapsize%m -jar "tools/signapk.jar" -w "tools/testkey.x509.pem" "tools/testkey.pk8" "ROMBUILD/tmp.zip" "ROMBUILD/signed_%romname%.zip"
-del /Q "ROMBUILD\tmp.zip">nul
-del /Q "ROMBUILD\unsigned_%romname%.zip">nul
+ren ROMBUILD\tmp.zip %romname%.zip
 call tools/scripts/done
 goto main
 
@@ -1910,3 +2072,5 @@ echo Pushing %pushfile% to /sdcard, this could take some time..
 "tools/adb" sideload "ROMBUILD/%pushfile%"
 call tools/scripts/done
 goto main
+
+:exit
