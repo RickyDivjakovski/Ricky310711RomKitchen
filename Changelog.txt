@@ -3,6 +3,9 @@ if more then 20 changes to the tool have been made just update it by 1.00
 
 #================================================================================================#
 
+###### V5.0.4(beta)
+modified GAPPS remover
+
 ###### V5.0.3(beta)
 fixed image unpacking
 fixed firstboot script
