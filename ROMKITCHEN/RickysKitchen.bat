@@ -1066,7 +1066,7 @@ if not exist WORKING/tmp/system.img.ext4 (
 if not exist WORKING/tmp/system.ext4.img (
 if not exist WORKING/tmp/system.ext.img (
 if not exist WORKING/tmp/system.img.ext (
-"tools/cecho" {0D} FAILED TO UNPACK KERNEL. {#}
+"tools/cecho" {0D} FAILED TO UNPACK SYSTEM. {#}
 echo.
 pause
 goto main
@@ -1127,23 +1127,33 @@ echo extracting kernel..
 if exist ORIGINAL/boot.img xcopy "ORIGINAL/boot.img" "WORKING/boot.img*">nul
 if not exist WORKING/boot.img xcopy "ORIGINAL\boot.img" "WORKING/boot.img*">nul
 if not exist WORKING/tmp mkdir WORKING/tmp
-echo extracting system..
-if exist ORIGINAL/system.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img*">nul
-if exist ORIGINAL/system.img.ext xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img.ext*">nul
-if exist ORIGINAL/system.ext.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.ext.img*">nul
-if exist ORIGINAL/system.ext4.img xcopy "ORIGINAL/system.img" "WORKING/tmp/system.ext4.img*">nul
-if exist ORIGINAL/system.img.ext4 xcopy "ORIGINAL/system.img" "WORKING/tmp/system.img.ext4*">nul
+echo copying system..
 mkdir "WORKING\system"
 if %imageformat% == ext4 (
+IF %selection% == 5 if exist ORIGINAL/system.img copy "ORIGINAL\system.img" "WORKING/tmp/system.img*"
+IF %selection% == 5 if exist ORIGINAL/system.img.ext copy "ORIGINAL\system.img.ext" "WORKING/tmp/system.img.ext*"
+IF %selection% == 5 if exist ORIGINAL/system.ext.img copy "ORIGINAL\system.ext.img" "WORKING/tmp/system.ext.img*"
+IF %selection% == 5 if exist ORIGINAL/system.ext4.img copy "ORIGINAL\system.ext4.img" "WORKING/tmp/system.ext4.img*"
+IF %selection% == 5 if exist ORIGINAL/system.img.ext4 copy "ORIGINAL\system.img.ext4" "WORKING/tmp/system.img.ext4*"
 "tools/ext4_unpacker.exe"
 )
 if %imageformat% == sparse (
 echo converting sparse image..
-if exist WORKING/tmp/system.img "tools/simg2img" WORKING/tmp/system.img WORKING/tmp/system.img.out
-if exist WORKING/tmp/system.img.ext "tools/simg2img" WORKING/tmp/system.img.ext WORKING/tmp/system.img.ext.out
-if exist WORKING/tmp/system.ext.img "tools/simg2img" WORKING/tmp/system.ext.img WORKING/tmp/system.ext.img.out
-if exist WORKING/tmp/system.ext4.img "tools/simg2img" WORKING/tmp/system.ext4.img WORKING/tmp/system.ext4.img.out
-if exist WORKING/tmp/system.img.ext4 "tools/simg2img" WORKING/tmp/system.img.ext4 WORKING/tmp/system.img.ext4.out
+IF %selection% == 4 if exist WORKING/tmp/system.img "tools/simg2img" WORKING/tmp/system.img WORKING/tmp/system.img.out
+IF %selection% == 4 if exist WORKING/tmp/system.img.ext "tools/simg2img" WORKING/tmp/system.img.ext WORKING/tmp/system.img.ext.out
+IF %selection% == 4 if exist WORKING/tmp/system.ext.img "tools/simg2img" WORKING/tmp/system.ext.img WORKING/tmp/system.ext.img.out
+IF %selection% == 4 if exist WORKING/tmp/system.ext4.img "tools/simg2img" WORKING/tmp/system.ext4.img WORKING/tmp/system.ext4.img.out
+IF %selection% == 4 if exist WORKING/tmp/system.img.ext4 "tools/simg2img" WORKING/tmp/system.img.ext4 WORKING/tmp/system.img.ext4.out
+IF %selection% == 4 if exist WORKING/tmp/system.img del "WORKING\tmp\system.img"
+IF %selection% == 4 if exist WORKING/tmp/system.img.ext del "WORKING\tmp\system.img.ext"
+IF %selection% == 4 if exist WORKING/tmp/system.ext.img del "WORKING\tmp\system.ext.img"
+IF %selection% == 4 if exist WORKING/tmp/system.ext4.img del "WORKING\tmp\system.ext4.img"
+IF %selection% == 4 if exist WORKING/tmp/system.img.ext4 del "WORKING\tmp\system.img.ext4"
+IF %selection% == 5 if exist ORIGINAL/system.img "tools/simg2img" ORIGINAL/system.img WORKING/tmp/system.img.out
+IF %selection% == 5 if exist ORIGINAL/system.img.ext "tools/simg2img" ORIGINAL/system.img.ext WORKING/tmp/system.img.ext.out
+IF %selection% == 5 if exist ORIGINAL/system.ext.img "tools/simg2img" ORIGINAL/system.ext.img WORKING/tmp/system.ext.img.out
+IF %selection% == 5 if exist ORIGINAL/system.ext4.img "tools/simg2img" ORIGINAL/system.ext4.img WORKING/tmp/system.ext4.img.out
+IF %selection% == 5 if exist ORIGINAL/system.img.ext4 "tools/simg2img" ORIGINAL/system.img.ext4 WORKING/tmp/system.img.ext4.out
 cd tools
 "ext2explore"
 cd ..

@@ -3,6 +3,11 @@ if more then 20 changes to the tool have been made just update it by 1.00
 
 #================================================================================================#
 
+###### V5.0.3(beta)
+fixed image unpacking
+fixed firstboot script
+fixed unpacking log for system
+
 ###### V5.0.0(beta)
 folders build on first boot
 updated deknox module
