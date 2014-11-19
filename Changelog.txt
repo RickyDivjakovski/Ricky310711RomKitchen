@@ -1,5 +1,4 @@
 Update this file by 0.01 each time when adding support for a new device or new options/bug fixes as seen below.
-<<<<<<< HEAD
 if more then 20 changes to the tool have been made just update it by 1.00
 
 #================================================================================================#
@@ -157,11 +156,6 @@ support Motorola DROID RAZR
 support Hauwei P6-U06
 support LG LG-P990 
 support Hauwei G526-L22
-
-=======
-if more then 30 changes to the tool have been made just update it by 1.00
-
-#================================================================================================#
 
 ###### V3.x.x
 Fixed device check crash
