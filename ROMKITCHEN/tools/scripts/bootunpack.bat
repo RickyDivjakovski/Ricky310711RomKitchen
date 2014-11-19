@@ -44,7 +44,7 @@ md %~N1
 "tools\sfk166.exe" partcopy %1 -fromto %ofs1% %ofs2% %~N1\kernel -yes
 "tools\sfk166.exe" partcopy %1 -fromto %ofs2% %ofs3% %~N1\ram_header -yes
 "tools\sfk166.exe" partcopy %1 -fromto %ofs3% %boot_size% %~N1\ram_disk.gz -yes
-"tools\7z.exe" -tgzip x -y %~N1\ram_disk.gz -o%~N1 >nul
+"tools\7za.exe" -tgzip x -y %~N1\ram_disk.gz -o%~N1 >nul
 md %~N1\rmdisk
 cd %~N1
 cd rmdisk
@@ -102,7 +102,7 @@ del tools\offset.txt
 del tools\off2.txt
 "tools\sfk166.exe" partcopy %1 -fromto %ps% %real_ofs% %~N1\kernel -yes
 "tools\sfk166.exe" partcopy %1 -fromto %real_ofs% %boot_size% %~N1\ram_disk.gz -yes
-"tools\7z.exe" -tgzip x -y %~N1\ram_disk.gz -o%~N1 >nul
+"tools\7za.exe" -tgzip x -y %~N1\ram_disk.gz -o%~N1 >nul
 md %~N1\rmdisk
 cd %~N1
 cd rmdisk

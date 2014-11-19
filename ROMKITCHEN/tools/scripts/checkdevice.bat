@@ -24,7 +24,6 @@ set kernel=/dev/block/mmcblk0p15
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == GT-I8190 (
 set kernel=/dev/block/mmcblk0p20
 goto complete
@@ -35,8 +34,6 @@ set kernel=/dev/block/mmcblk0p20
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == GT-I8262 (
 set kernel=/dev/block/mmcblk0p8
 goto complete
@@ -57,27 +54,21 @@ set kernel=/dev/block/mmcblk0p5
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == GT-I9070 (
 set kernel=/dev/block/mmcblk0p10
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == GT-I9100G (
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == GT-I9105P (
 set kernel=/dev/block/mmcblk0p11
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == GT-I9300 (
 set kernel=/dev/block/mmcblk0p5
 goto complete
@@ -98,14 +89,11 @@ set kernel=/dev/block/mmcblk0p20
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% ==  GT-I9512 (
 set kernel=/dev/block/mmcblk0p5
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == GT-N7100 (
 set kernel=/dev/block/mmcblk0p8
 goto complete
@@ -166,14 +154,11 @@ set kernel=/dev/block/mmcblk0p8
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == GT-S7580L  (
 set kernel=/dev/block/mmcblk0p5
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == SGH-I145 (
 set kernel=/dev/block/mmcblk0p21
 goto complete
@@ -205,25 +190,16 @@ goto complete
 )
 
 if %device% == SGH-M919 (
-<<<<<<< HEAD
 set kernel=/dev/block/mmcblk0p20
-=======
-echo set kernel=/dev/block/mmcblk0p20
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 goto complete
 )
 
 if %device% == SM-N900 (
-<<<<<<< HEAD
 set kernel=/dev/block/mmcblk0p9
-=======
-echo set kernel=/dev/block/mmcblk0p9
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 goto complete
 )
 
 if %device% == SM-G900F (
-<<<<<<< HEAD
 set kernel=/dev/block/mmcblk0p15
 goto complete
 )
@@ -240,9 +216,6 @@ goto complete
 
 if %device% == SM-G906S (
 set kernel=/dev/block/mmcblk0p17
-=======
-echo set kernel=/dev/block/mmcblk0p15
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 goto complete
 )
 
@@ -265,23 +238,16 @@ echo ########################## HUAWEI >> tmp.txt
 del tmp.txt
 
 
-<<<<<<< HEAD
 if %device% == "Ascend Y300" (
-=======
-if %device% == G526-L22 (
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == G526-L22 (
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == P6-U06 (
 set kernel=/dev/block/platform/hi_mci.1/by-name/boot
 goto complete
@@ -291,7 +257,6 @@ echo ########################## LG >> tmp.txt
 del tmp.txt
 
 
-<<<<<<< HEAD
 if %device% == LG-D800 (
 set kernel=/dev/block/mmcblk0p7
 goto complete
@@ -302,23 +267,16 @@ set kernel=/dev/block/mmcblk0p7
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == LG-D802 (
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == LG-D950 (
-=======
-if %device% == LG-MS870 (
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 set kernel=/dev/block/mmcblk0p7
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == LG-E612 (
 set kernel=/dev/block/mmcblk0p2
 goto complete
@@ -354,25 +312,15 @@ set kernel=/dev/block/mmcblk0p2
 goto complete
 )
 
-=======
-if %device% == LG-P760 (
-set kernel=/dev/block/platform/omap/omap_hsmmc.1
-goto complete
-)
-
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == LG-P990 (
 set kernel=/dev/block/mmcblk0p6
 goto complete
 )
-<<<<<<< HEAD
 
 if %device% == "VS985 4G" (
 set kernel=/dev/block/mmcblk0p5
 goto complete
 )
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 
 echo ########################## MOTOROLA >> tmp.txt
 del tmp.txt
@@ -383,27 +331,21 @@ set kernel=/dev/block/mmcblk1p9
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == XT1031 (
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == XT1032 (
 set kernel=/dev/block/platform/msm_sdcc.1/by-name/boot
 goto complete
 )
 
-<<<<<<< HEAD
 if %device% == XT1033 (
 set kernel=/dev/block/mmcblk0p31
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 echo ########################## HTC >> tmp.txt
 del tmp.txt
 
@@ -417,7 +359,6 @@ echo ########################## SONY >> tmp.txt
 del tmp.txt
 
 
-<<<<<<< HEAD
 if %device% == C1505 (
 set kernel=/dev/block/mmcblk0p3
 goto complete
@@ -433,8 +374,6 @@ set kernel=/dev/block/mmcb1k0p23
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if %device% == D6503 (
 set kernel=/dev/block/mmcblk0p14
 goto complete
@@ -479,16 +418,11 @@ echo ########################## MEDIATEK >> tmp.txt
 del tmp.txt
 
 
-<<<<<<< HEAD
 if %device% == "GSmart Aku A1" (
-=======
-if %device% == GSmart Aku A1 (
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 set kernel=/dev/block/mmcblk0
 goto complete
 )
 
-<<<<<<< HEAD
 echo ########################## IMOBILE >> tmp.txt
 del tmp.txt
 
@@ -498,8 +432,6 @@ set kernel=/dev/block/mmcblk0p16
 goto complete
 )
 
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 echo ########################## UNSUPPORTED >> tmp.txt
 del tmp.txt
 

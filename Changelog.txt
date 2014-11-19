@@ -18,6 +18,15 @@ updated init.d trigger
 changed unknown parameters to N/A
 detects module update feature
 updated degapps module
+updated adb
+updated adb registry files
+updated fastboot
+updated busybox
+updates aapt
+updates zipalign
+removed show log file
+removed double 7z file
+updated syntax for boot utils
 support for LG LG-P880 
 support for Sony C1505
 support for Samsung GT-S7580L 

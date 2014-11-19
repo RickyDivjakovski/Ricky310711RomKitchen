@@ -1,7 +1,6 @@
 "tools/cecho" {0A} REFRESHING STATS{#}
 
 set romname=
-<<<<<<< HEAD
 set romversion=No aroma
 set romauthor=No aroma
 set romdate=No aroma
@@ -10,16 +9,6 @@ set romlicence=No aroma
 set romtheme=No aroma
 set romdevice=
 set architecture=
-=======
-set romversion=
-set romauthor=
-set romdate=
-set aromaconfig=
-set romdevice=
-set architecture=
-set romlicence=
-set romtheme=
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 set initdconfig=
 set rootconfig=
 set busyboxconfig=
@@ -39,16 +28,6 @@ set bootanimation=
 set gpurendering=
 
 set /A count=0
-<<<<<<< HEAD
-=======
-FOR %%F IN (tools/config/romsettings/romname/*) DO (
-set tmpdata=%%~nF%%~xF
-set /A count+=1
-)
-if %count%==0 goto complete
-
-set tmpdata=
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 FOR %%F IN (tools/config/romsettings/romname/*) DO (
 set tmpdata=%%~nF%%~xF
 set /A count+=1
@@ -90,18 +69,8 @@ FOR %%F IN (tools/config/romsettings/aromatheme/*) DO (
 set tmpdata=%%~nF%%~xF
 )
 set romtheme=%tmpdata%
-<<<<<<< HEAD
 )
 
-
-if exist WORKING/system/build.prop (
-findstr "ro.product.cpu.abi=" "WORKING\system\build.prop" >tmp.txt
-cscript "tools/sed.vbs" "tmp.txt" "ro.product.cpu.abi=" "">nul
-cscript "tools/sed.vbs" "tmp.txt" "eabi-v6a" "">nul
-cscript "tools/sed.vbs" "tmp.txt" "eabi-v7a" "">nul
-cscript "tools/sed.vbs" "tmp.txt" "eabi-v8a" "">nul
-set /p architecture=<tmp.txt
-=======
 
 if exist WORKING/system/build.prop (
 findstr "ro.product.cpu.abi=" "WORKING\system\build.prop" >tmp.txt
@@ -117,21 +86,10 @@ if exist WORKING/system/build.prop (
 findstr "ro.build.version.sdk=" "WORKING\system\build.prop" >tmp.txt
 cscript "tools/sed.vbs" "tmp.txt" "ro.build.version.sdk=" "">nul
 set /p api=<tmp.txt
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 del "tmp.txt"
 )
 
 if exist WORKING/system/build.prop (
-<<<<<<< HEAD
-findstr "ro.build.version.sdk=" "WORKING\system\build.prop" >tmp.txt
-cscript "tools/sed.vbs" "tmp.txt" "ro.build.version.sdk=" "">nul
-set /p api=<tmp.txt
-del "tmp.txt"
-)
-
-if exist WORKING/system/build.prop (
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 findstr "ro.sf.lcd_density=" "WORKING\system\build.prop" >tmp.txt
 cscript "tools/sed.vbs" "tmp.txt" "ro.sf.lcd_density=" "">nul
 set /p density=<tmp.txt

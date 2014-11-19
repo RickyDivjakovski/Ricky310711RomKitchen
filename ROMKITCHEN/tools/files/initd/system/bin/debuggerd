@@ -36,7 +36,6 @@
 # You can also specify "0" here for no delay and insta-call, but beware that all your init.d scripts probably will be executed twice - by kernel and this hook
 DELAY=5
 
-<<<<<<< HEAD
 # Don't change values below unless you know what you're doing
 INITDPART="/system/etc/init.d/00ARCHIDROID_INITD" # This is the init.d part of ArchiDroid's Init.d
 CHECKPART="/data/ARCHIDROID_INITD" # This is the check-file, must be the same here and in the init.d part specified above
@@ -59,22 +58,6 @@ if [ ! -x "$INITDPART" ]; then
 else
 	# ArchiDroid Backend call, used only on ArchiDroid ROM
 	echo "INFO: INITDPART $INITDPART found, all good"
-=======
-# This value specifies if you want to call all scripts in the background or not
-# In general it's a good idea to call them in the background, change this to "false" only if you require strict-order of your scripts
-BACKGROUND=1
-
-# Don't change values below unless you know what you're doing
-INITDPART="/system/etc/init.d/00ARCHIDROID_INITD" # This is the init.d part of ArchiDroid's Init.d
-CHECKPART="/dev/ARCHIDROID_INITD" # This is the check-file, must be the same here and in the init.d part specified above
-DEBUGGERD="debuggerd.real" # This is the *real* debuggerd binary which should be executed after we're done
-
-# Core
-if [ ! -x "$INITDPART" ]; then
-	echo "ERROR: INITDPART $INITDPART was not found, make sure that it exists and is executable, halt" > "$CHECKPART"
-else
-	# ArchiDroid Backend call, used only on ArchiDroid ROM
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 	if [ ! -z "$(which ARCHIDROID_RUNONCE)" ]; then
 		ARCHIDROID_RUNONCE "background" &
 	elif [ ! -z "$(which ARCHIDROID_INIT)" ]; then
@@ -82,15 +65,11 @@ else
 	fi
 
 	if [ ! -f "$CHECKPART" ]; then
-<<<<<<< HEAD
 		echo "INFO: Init.d not yet executed, waiting $DELAY seconds for kernel's reaction"
-=======
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 		sleep "$DELAY"
 	fi
 
 	if [ ! -f "$CHECKPART" ]; then
-<<<<<<< HEAD
 		echo "INFO: After $DELAY seconds init.d is still not executed, executing all init.d scripts right now"
 		if [ ! -z "$(which sysinit)" ]; then
 			echo "INFO: Sysinit found, calling sysinit to execute init.d"
@@ -120,26 +99,3 @@ rm -f "$CHECKPART" # We don't need you anymore
 echo "INFO: ArchiDroid Init.d finished"
 date
 exec "$DEBUGGERD" $@ # Yes, we must break on spaces in this case
-=======
-		find /system/etc/init.d -mindepth 1 -maxdepth 1 -type f | sort | while read line; do
-			if [ -x "$line" ]; then
-				if [ "$BACKGROUND" -eq 1 ]; then
-					"$line" &
-				else
-					"$line"
-				fi
-			fi
-		done
-		if [ ! -f "$CHECKPART" ]; then
-			echo "ERROR: CHECKPART doesn't exist even after our init.d execution. This shouldn't happen, something is seriously broken here, please investigate" > "$CHECKPART"
-		else
-			echo "Init.d has been properly executed by ArchiDroid Init.d" > "$CHECKPART"
-		fi
-	else
-		echo "Init.d has been properly executed by the kernel" > "$CHECKPART"
-	fi
-fi
-
-exec "$DEBUGGERD" $@ # Yes, we must break on spaces in this case
-exit 0
->>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
