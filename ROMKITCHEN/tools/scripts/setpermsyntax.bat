@@ -257,7 +257,10 @@ if exist WORKING/system/xbin/su echo root detected
 if exist WORKING/system/xbin/su echo ui_print("Initializing Root"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/xbin/su echo set_perm(0, 0, 06755, "/system/xbin/su"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/xbin/daemonsu echo set_perm(0, 0, 06755, "/system/xbin/daemonsu"); >> WORKING/META-INF/com/google/android/updater-script
+<<<<<<< HEAD
 if exist WORKING/system/xbin/supolicy echo set_perm(0, 0, 06755, "/system/xbin/supolicy"); >> WORKING/META-INF/com/google/android/updater-script
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if exist WORKING/system/bin/.ext echo set_perm(0, 0, 0777, "/system/bin/.ext"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/bin/.ext/.su echo set_perm(0, 0, 06755, "/system/system/bin/.ext/.su"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/etc/install-recovery.sh echo set_perm(0, 0, 0755, "/system/etc/install-recovery.sh"); >> WORKING/META-INF/com/google/android/updater-script

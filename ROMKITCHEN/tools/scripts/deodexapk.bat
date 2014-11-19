@@ -1,6 +1,10 @@
 echo off
 if (%1)==() GOTO complete
+<<<<<<< HEAD
 "tools/cecho" deodexing %~n1
+=======
+"tools/cecho" deodexing %~n1 
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 IF NOT EXIST "WORKING/system/app/%~n1.odex" goto skip
 mkdir "WORKING/system/app/tmp_%~n1"
 
@@ -30,8 +34,11 @@ echo.
 goto complete
 :error
 "tools/cecho"  {0C}FAILED{#}
+<<<<<<< HEAD
 echo.
 "tools/cecho"  {0C}If "Too small initial heap" change heapsize in settings and try again{#}
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 echo.
 pause
 if exist "WORKING/system/app/tmp_%~n1" rmdir /s /q "WORKING/system/app/tmp_%~n1"

@@ -256,7 +256,10 @@ echo detecting root..
 if exist WORKING/system/xbin/su echo root detected
 if exist WORKING/system/xbin/su echo ui_print("Initializing Root"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/xbin/su echo set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+<<<<<<< HEAD
 if exist WORKING/system/xbin/supolicy echo set_metadata("/system/xbin/supolicy", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if exist WORKING/system/xbin/daemonsu echo set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/bin/.ext echo set_metadata("/system/bin/.ext", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
 if exist WORKING/system/bin/.ext/.su echo set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
@@ -268,7 +271,10 @@ if exist WORKING/system/xbin/su echo run_program("/system/xbin/su", "--install")
 if not exist WORKING/system/xbin/su echo root not detected
 if not exist WORKING/system/xbin/su echo ##ROOTLINE##ui_print("Initializing Root"); >> WORKING/META-INF/com/google/android/updater-script
 if not exist WORKING/system/xbin/su echo ##ROOTLINE##set_metadata("/system/xbin/su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+<<<<<<< HEAD
 if not exist WORKING/system/xbin/supolicy echo ##ROOTLINE##set_metadata("/system/xbin/supolicy", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 if not exist WORKING/system/xbin/daemonsu echo ##ROOTLINE##set_metadata("/system/xbin/daemonsu", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
 if not exist WORKING/system/bin/.ext echo ##ROOTLINE##set_metadata("/system/bin/.ext", "uid", 0, "gid", 0, "mode", 0777, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script
 if not exist WORKING/system/bin/.ext/.su echo ##ROOTLINE##set_metadata("/system/bin/.ext/.su", "uid", 0, "gid", 0, "mode", 06755, "capabilities", 0x0, "selabel", "u:object_r:su_exec:s0"); >> WORKING/META-INF/com/google/android/updater-script

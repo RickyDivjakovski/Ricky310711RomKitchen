@@ -10,8 +10,11 @@ Support count=75 devices
 ###### SAMSUNG
 
 GT-I8160
+<<<<<<< HEAD
 GT-I8190
 GT-I8190N
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 GT-I8262 
 GT-I9000
 GT-I9001
@@ -36,17 +39,24 @@ GT-P5110
 GT-P5113
 GT-P7500
 GT-S6310
+<<<<<<< HEAD
 GT-S7580L
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 SCH-I545 
 SCH-I605 
 SGH-I317
 SGH-1747 
 SGH-M919
 SM-G900F
+<<<<<<< HEAD
 SM-G900P
 SM-G900V
 SM-N900 
 SM-G906S
+=======
+SM-N900 
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 SM-N9005
 SM-N900T
 SM-T320
@@ -63,17 +73,25 @@ LGLS740
 LG-MS870
 LG-P710
 LG-P760
+<<<<<<< HEAD
 LG-P875H
 LG-P880
 LG-P990 
 VS985
+=======
+LG-P990 
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 
 
 ###### MOTOROLA
 
+<<<<<<< HEAD
 XT1031
 XT1032 
 XT1033
+=======
+XT1032 
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 DROID RAZR 
 
 
@@ -81,19 +99,27 @@ DROID RAZR
 
 P6-U06
 G526-L22
+<<<<<<< HEAD
 Ascend Y300
 
+=======
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 
 ###### HTC
 
 831C
 
+<<<<<<< HEAD
 
 ###### SONY
 
 C1505
 C5502
 C6603
+=======
+###### SONY
+
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 D6503
 LT25i
 LT29i
@@ -103,6 +129,7 @@ ST25a
 MT27i
 MT27a
 
+<<<<<<< HEAD
 
 ###### MEDIATEK
 
@@ -112,3 +139,8 @@ GSmart Aku A1
 ###### I-MOBILE
 
 IQ5.1 Pro 
+=======
+###### MEDIATEK
+
+GSmart Aku A1
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16

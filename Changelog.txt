@@ -1,4 +1,5 @@
 Update this file by 0.01 each time when adding support for a new device or new options/bug fixes as seen below.
+<<<<<<< HEAD
 if more then 20 changes to the tool have been made just update it by 1.00
 
 #================================================================================================#
@@ -147,6 +148,111 @@ support Hauwei P6-U06
 support LG LG-P990 
 support Hauwei G526-L22
 
+=======
+if more then 30 changes to the tool have been made just update it by 1.00
+
+#================================================================================================#
+
+###### V3.x.x
+Fixed device check crash
+removed logging(causing issues)
+changes to the tool configuration system
+tool settings stored in a single file
+fixed apply insecure root method
+image format toggle added
+fixed start from image bug
+
+added Sparse image support
+added default runtime compiler toggle module(dalvik/art)
+added CSC unpack module
+
+###### V3.0.0
+Added module support
+fixed knox detection bug
+deknox is now a module
+de-gapps module added
+fixed debuggerd bug
+fixed export bug(invalid switch)
+window size set by tool
+removed refresh interval if no project
+fixed priv-app zipaligning
+building rom adds to an already signed .zip file(faster and fixes signing bug)
+fixed start from odin package bug
+fixed start from image bug
+fixed project existance parameter
+Added error logging to the tool
+more fluent device check
+better deodex detetction
+faster rom stat refreshing
+improved architecture detection
+improved api level detection
+remove "findandreplacetext" utillity
+more fluent rom refreshing
+fixed sysrw/ro detetection
+removed un-neccessary files/directories
+dos2unix now run silently
+added option to view log
+fixed app-backup initialization
+main tool called from different directory
+fixed no-root bug
+added current value for density
+added abillity to toggle wipes
+better bitcode verification toggle and method
+better gpu rendering toggle and method
+better bootanimation toggle and method
+fixed symlink bug
+compatible with windows XP
+support for Samsung GT-N8010
+support for Samsung GT-N8013
+support for Samsung GT-I8160
+support for HTC 831C
+support for Sony D6503
+support for Sony LT25i
+support for Sony LT29i
+support for Sony LT30i
+support for Sony ST25i
+support for Sony ST25a
+support for Sony MT27i
+support for Sony MT27a
+support for Mediatek GSmart Aku A1
+
+###### V2.00
+Fixed framework deodexing
+fixed priv-app deodexing
+minor chages to deodexing
+fixed priv-app zipaligning
+removed the need for "processed" folder
+minor changes to zipalignin system
+zipaligning faileled item path specification added
+fixed system image copying method to tmp folder
+fixed systenm extraction from odin package
+fixed symlinks not appearing bug
+fixed knox detetction bug
+more knox folders removed
+updated de-knoxing
+automatic generic symlinks
+resume support for deodexing
+added aroma incompatibillity notice with set_metadata syntax
+added insecure root mode setting(access without verification)
+added insecure boot warning message(unstable)
+updated zipalign binary
+updated archi init.d method
+fixed type errors
+updated supersu binary and app(1.94)
+added second root method
+Fixed signing issue
+add project import/export
+fixed delete project error
+support Samsung SM-N900 
+support Samsung SCH-I605 
+support Samsung SCH-I545 
+support Samsung SGH-1747 
+support Motorola DROID RAZR 
+support Hauwei P6-U06
+support LG LG-P990 
+support Hauwei G526-L22
+
+>>>>>>> 04c0b1f956f76f863ba24aa2ff0ad29fc242af16
 ###### V1.24
 partially fixed deodexing priv-app folder
 partially fixed signing/delete error
